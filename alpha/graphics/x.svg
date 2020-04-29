@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="68" height="68" viewBox="0 0 68 68">
+  <defs>
+    <filter id="Background" x="0" y="0" width="68" height="68" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Close_Button" data-name="Close Button" transform="translate(-1114.994 -100.994)">
+    <g transform="matrix(1, 0, 0, 1, 1114.99, 100.99)" filter="url(#Background)">
+      <circle id="Background-2" data-name="Background" cx="25" cy="25" r="25" transform="translate(9 6)" fill="#fff"/>
+    </g>
+    <path id="X" d="M10.334,10.334,0,20.668,10.334,10.334,0,0,10.334,10.334,20.668,0,10.334,10.334,20.668,20.668Z" transform="translate(1138.876 121.876)" fill="none" stroke="#707070" stroke-width="3"/>
+  </g>
+</svg>

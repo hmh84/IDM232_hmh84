@@ -1,3 +1,359 @@
-h1, h2 {width: 100%; text-align: center; font-weight: bold;}
-h2 {margin: 2rem 0;}
-img {width: 100%; margin: 0;}
+:root {
+    --primary-blue: #67DAE8;
+    --primary-black: #2E2E2E;
+    --primary-black-rgba: rgba(46, 46, 46, .5);
+    --primary-purple: #786FFF;
+
+    --hero-height: 17rem;
+    --mobile-margin: 1.5rem;
+}
+
+* {
+    color: var(--primary-black);
+}
+
+a, a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {font-size: 24px; margin: 0;}
+h2 {font-size: 15px;}
+p  {font-size: 14px;}
+
+body {
+    background-image: url(../graphics/wallpaper.svg);
+    background-repeat: repeat-y;
+    overflow-x: hidden;
+}
+
+/* Header / Hero */
+
+#hero img {
+    filter: blur(1px);
+    height: var(--hero-height);
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 85%);
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 85%);
+}
+
+#heroFilter {
+    background-color: rgba(103, 218, 232, .5);
+    height: var(--hero-height);
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 85%);
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 85%);
+}
+
+#heroContent {
+    position: absolute;
+    z-index: 3;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+}
+
+#heroContent h1:first-of-type, #heroContent h2 {
+    float: left;
+    margin: 0;
+    color: white;
+}
+
+#heroContent p {
+    float: right;
+    text-decoration: underline;
+    color: white;
+}
+
+#heroContent p:first-of-type {
+    margin-left: 1rem;
+}
+
+#heroContent h2 {
+    clear: both;
+}
+
+#heroContent h1:last-of-type {
+    clear: both;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 4.5rem;
+}
+
+/* Main */
+
+main {
+    padding: var(--hero-height) 1.5rem 1.5rem 1.5rem;
+}
+
+main h1 {
+    text-align: center;
+}
+
+#search, #filter {
+    margin: var(--mobile-margin) 0;
+    height: 3rem;
+    width: 100%;
+    border: var(--primary-purple) solid;
+    background-color: white;
+}
+
+#search input {
+    height: 100%;
+    width: 85%;
+    float: left;
+    padding: 1rem;
+}
+
+#filter p {
+    position: absolute;
+    padding: .8rem 1rem;
+}
+
+#search button, #filter button {
+    width: 15%;
+    height: 100%;
+    background-color: var(--primary-purple);
+    float: right;
+    transform: scale(1.02); /* This corrects the outline render issues */
+}
+
+#search button img, #filter button img {
+    transform: translateY(.2rem);
+}
+
+#noResults h1 {
+    margin: var(--mobile-margin) 0;
+}
+
+#noResults button {
+    text-align: center;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    clear: both;
+    margin: var(--mobile-margin) 50% 0 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: var(--primary-purple) solid .2rem;
+    color: var(--primary-black);
+}
+
+/* Modal */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-black-rgba);
+    z-index: 10;
+    padding: calc(var(--mobile-margin)/1.5);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.modal-content, .modal-content-small {
+    background-color: white;
+    width: 100%;
+    height: fit-content;
+    border-radius: 1.25rem;
+    padding: calc(var(--mobile-margin)/1.5);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.modalClose {
+    position: fixed;
+    top: 0;
+    right: 0;
+    position: fixed;
+    cursor: pointer;
+}
+
+.modal-content img:first-of-type {
+    object-fit: cover;
+    width: 111%;
+    height: 10rem;
+    margin: calc(var(--mobile-margin)/-1.5) calc(var(--mobile-margin)/-1.5) var(--mobile-margin) calc(var(--mobile-margin)/-1.5);
+}
+
+#modalCloseSmall {
+    top: 21%;
+}
+
+.modal-content-small {
+    margin-top: 50%;
+}
+
+.modal h1, .modal h2, .modal h3, .modal p {
+    margin-bottom: calc(var(--mobile-margin)/1.5);
+}
+
+.modal h1, .modal h2, .modal h3 {
+    font-weight: bold;
+}
+
+.modal:last-child{
+    text-align: center;
+}
+
+/* Welcome Menu */
+
+#modal-welcome {
+    margin-top: 50%;
+}
+
+#modal-welcome * {
+    margin-bottom: calc(var(--mobile-margin)/2);
+}
+
+#modal-welcome h1, #modal-welcome a {
+    text-align: center;
+}
+
+#modal-welcome h1 {
+    margin-top: calc(var(--mobile-margin)/2);
+}
+
+#modal-welcome button {
+    width: 75%;
+    padding: 1rem;
+    margin: 0 2.33rem calc(var(--mobile-margin)/2) 2.33rem;
+    background-color: white;
+    border: var(--primary-purple) solid .2rem;
+    color: var(--primary-black);
+}
+
+/* Help Menu */
+
+#modal-help h2 {
+    text-align: center;
+}
+
+/* Recipes */
+
+.modal-content img {
+    width: 100%;
+    margin-bottom: calc(var(--mobile-margin)/2);
+}
+
+#recipe-cook-time, #recipe-serving-count, #recipe-cals-per-serving {
+    font-size: .75rem;
+    font-weight: normal;
+}
+
+#recipe-stats, #recipe-ings {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+#recipe-desc {
+    clear: both;
+}
+
+#recipe-ings {
+    justify-content: space-between;
+}
+
+#recipe-ing-col-1, #recipe-ing-col-2 {
+    width: 50%;
+}
+
+#modal-recipe h1:last-of-type {
+    text-align: center;
+}
+
+/* Cards */
+
+.card {
+    float: left;
+    width: 100%;
+    height: 10.1875rem;
+    margin-bottom: var(--mobile-margin);
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1.25rem;
+    cursor: pointer;
+}
+
+.cardImg {
+    float: left;
+    width: 30%;
+    height: 100%;
+    background-image: url(../graphics/0101_2PM_Steak-Diane_97315_SQ_hi_res.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 1.25rem 0 0 1.25rem;
+}
+
+.cardContent {
+    float: right;
+    width: 70%;
+    padding: 1rem;
+}
+
+.card h2, .card p {
+    float: left;
+}
+
+.card-title, .card-subtitle, .card-desc {
+    width: 100%;
+}
+
+.card-mins, .card-cals {
+    float: right;
+    text-align: right;
+}
+
+.card-title, .card-subtitle, .card-mins, .card-cals, .card-minsPrefix, .card-calsPrefix {
+    font-weight: bold;
+}
+
+.card-desc {
+    margin: .25rem 0;
+}
+
+/* Footer */
+
+footer {
+    clear: both;
+    background-color: var(--primary-black);
+    height: 3rem;
+}
+
+footer p {
+    padding: 1.0625rem 1.5rem;
+    float: left;
+    color: white;
+}
+
+footer a {
+    height: 3rem;
+    float: right;
+    text-align: right;
+}
+
+footer a:hover {
+    background-color: gray;
+    color: var(--primary-black);
+}
+
+footer a:hover p {
+    color: var(--primary-black);
+}
+
+/* Hover States */
+
+footer a, footer a p {
+    transition: all .1s ease-in-out;
+    -webkit-transition: all .1s ease-in-out;
+}

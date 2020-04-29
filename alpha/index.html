@@ -9,38 +9,229 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+
+<!-- Header -->
+
+    <header>
+        <div id="hero">
+            <div id="heroFilter"></div>
+            <img src="graphics/0101_FPP_Chicken-Rice_18639_WEB_high_feature.jpg" alt="">
+            <div id="heroContent">
+                <h1 class="logoText">BlueBook</h1>
+                <p id="helpBtn">Help</p>
+                <p id="menuBtn">Menu</p>
+                <h2 class="logoText">Let's get cooking.</h2>
+                <h1>BlueBook is a company dedicated to bringing you high quality meals made in simple ways.</h1>
+            </div>
+        </div>
+    </header>
+
+<!-- Main - Search & Filter -->
+
     <main>
-        <h1>IDM 232: Alpha - Wireframes & Style Tile</h1>
-        <h1>Hunter Hampton</h1>
-        <h2>Style Tile</h2>
-        <img src="graphics/Style Tile.jpg" alt="Style Tile">
+        <h1 id="title">All Recipes</h1>
+        <div id="search">
+            <input id="searchInput" type="search" placeholder="Search">
+            <button id="submit" type="submit">
+                <img src="graphics/search-icon.svg" alt="SVG">
+            </button>
+        </div>
+        <div id="filter">
+            <p>Filter</p>
+            <button>
+                <img src="graphics/filter-icon.svg" alt="SVG">
+            </button>
+        </div>
+        <div id="noResults" hidden>
+            <h1>Sorry, looks like we couldn't find that one..</h1>
+            <h1>Try searching for something like <strong>"spicy"</strong> or <strong>"seared"</strong></h1>
+            <button id="noResults-button">Okay</button>
+        </div>
 
-        <h2>Home/Browse: Desktop</h2>
-        <img src="graphics/Desktop-1.jpg" alt="Home/Browse: Desktop">
+<!-- Main - Cards -->
 
-        <h2>Recipe: Desktop</h2>
-        <img src="graphics/Desktop.jpg" alt="Recipe: Desktop">
-
-        <h2>Home/Browse: Tablet</h2>
-        <img src="graphics/Tablet-1.jpg" alt="Home/Browse: Tablet">
-
-        <h2>Recipe: Tablet</h2>
-        <img src="graphics/Tablet.jpg" alt="Recipe: Tablet">
-
-        <h2>Recipe: Mobile</h2>
-        <img src="graphics/Mobile-1.jpg" alt="Recipe: Mobile">
-
-        <h2>Recipe: Mobile</h2>
-        <img src="graphics/Mobile.jpg" alt="Recipe: Mobile">
-
-        <h2>No Search Results</h2>
-        <img src="graphics/No Results.jpg" alt="No Search Results">
-
-        <h2>Filter</h2>
-        <img src="graphics/Filter.jpg" alt="Filter">
-
-        <h2>Help</h2>
-        <img src="graphics/Help.jpg" alt="Help">
+        <div id="cards">
+            <div class="card">
+                <div class="cardImg"></div>
+                <div class="cardContent">
+                    <h2 class="card-title">Ancho-Orange Chicken</h2>
+                    <p  class="card-subtitle">with Kale, Rice, & Roasted Carrots</p>
+                    <p  class="card-desc">Weʼre amping up chicken breasts with a  glaze of smoky ancho Chile paste and fresh orange juice in …</p>
+                    <p  class="card-minsPrefix">Cook Time</p>
+                    <p  class="card-mins">......................45mins</p>
+                    <p  class="card-calsPrefix">Calories/Serving</p>
+                    <p  class="card-cals">...................600</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="cardImg"></div>
+                <div class="cardContent">
+                    <h2 class="card-title">Ancho-Orange Chicken</h2>
+                    <p  class="card-subtitle">with Kale, Rice, & Roasted Carrots</p>
+                    <p  class="card-desc">Weʼre amping up chicken breasts with a  glaze of smoky ancho Chile paste and fresh orange juice in …</p>
+                    <p  class="card-minsPrefix">Cook Time</p>
+                    <p  class="card-mins">......................45mins</p>
+                    <p  class="card-calsPrefix">Calories/Serving</p>
+                    <p  class="card-cals">...................600</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="cardImg"></div>
+                <div class="cardContent">
+                    <h2 class="card-title">Ancho-Orange Chicken</h2>
+                    <p  class="card-subtitle">with Kale, Rice, & Roasted Carrots</p>
+                    <p  class="card-desc">Weʼre amping up chicken breasts with a  glaze of smoky ancho Chile paste and fresh orange juice in …</p>
+                    <p  class="card-minsPrefix">Cook Time</p>
+                    <p  class="card-mins">......................45mins</p>
+                    <p  class="card-calsPrefix">Calories/Serving</p>
+                    <p  class="card-cals">...................600</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="cardImg"></div>
+                <div class="cardContent">
+                    <h2 class="card-title">Ancho-Orange Chicken</h2>
+                    <p  class="card-subtitle">with Kale, Rice, & Roasted Carrots</p>
+                    <p  class="card-desc">Weʼre amping up chicken breasts with a  glaze of smoky ancho Chile paste and fresh orange juice in …</p>
+                    <p  class="card-minsPrefix">Cook Time</p>
+                    <p  class="card-mins">......................45mins</p>
+                    <p  class="card-calsPrefix">Calories/Serving</p>
+                    <p  class="card-cals">...................600</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="cardImg"></div>
+                <div class="cardContent">
+                    <h2 class="card-title">Ancho-Orange Chicken</h2>
+                    <p  class="card-subtitle">with Kale, Rice, & Roasted Carrots</p>
+                    <p  class="card-desc">Weʼre amping up chicken breasts with a  glaze of smoky ancho Chile paste and fresh orange juice in …</p>
+                    <p  class="card-minsPrefix">Cook Time</p>
+                    <p  class="card-mins">......................45mins</p>
+                    <p  class="card-calsPrefix">Calories/Serving</p>
+                    <p  class="card-cals">...................600</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="cardImg"></div>
+                <div class="cardContent">
+                    <h2 class="card-title">Ancho-Orange Chicken</h2>
+                    <p  class="card-subtitle">with Kale, Rice, & Roasted Carrots</p>
+                    <p  class="card-desc">Weʼre amping up chicken breasts with a  glaze of smoky ancho Chile paste and fresh orange juice in …</p>
+                    <p  class="card-minsPrefix">Cook Time</p>
+                    <p  class="card-mins">......................45mins</p>
+                    <p  class="card-calsPrefix">Calories/Serving</p>
+                    <p  class="card-cals">...................600</p>
+                </div>
+            </div>
+        </div>
     </main>
+
+<!-- Modals -->
+
+<div class="modal">
+    <img class="modalClose" id="modalCloseSmall" src="graphics/x.svg" alt="Close Icon">
+    
+    <div class="modal-content" id="modal-welcome" >
+        <h1>IDM 232: Alpha</h1>
+        <button class="wframe-button">WireFrames & Styles</button>
+        <button class="okay-button">Static HTML</button>
+    </div>
+
+    <div class="modal-content" id="modal-help" hidden>
+        <img src="graphics/helpImg.jpg" alt="Help Photo">
+        <h1>Help</h1>
+            <h2>About BlueBook</h2>
+                <h3>How it Works</h3>
+                    <p>Why are you named Blue Book?</p>
+                    <p>How do Blue Book meals work?</p>
+                    <p>What delivery days are there in my area?</p>
+                    <p>Where do you deliver?</p>
+                    <p>Is there a minimum duration required for the Blue Book meals subscription?</p>
+                    <p>Are there membership fees?</p>
+                    <p>See all 7 articles</p>
+                <h3>Plans</h3>
+                    <p>What is Meal Prep by Blue Book?</p>
+                    <p>Is it available in my area?</p>
+                    <p>What meal plans do you offer?</p>
+                    <p>Do you have specific dietary plans?</p>
+                <h3>Recipes</h3>
+                    <p>What are Premium Recipes?</p>
+                    <p>What comes in each delivery?</p>
+                    <p>Can Blue Book accommodate food allergies?</p>
+                    <p>Do you provide nutritional and caloric information?</p>
+                    <p>Do you offer vegetarian recipes?</p>
+                    <p>How does Blue Book define a vegetarian recipe?</p>
+                <a href="">
+                    <strong>See all 10 articles</strong>
+                </a>
+        <p>If you haven’t found your answer, you can reach us <a href=""><strong>here.</strong></a></p>
+    </div>
+
+    <div class="modal-content" id="modal-recipe" hidden>
+        <img id="recipe-hero" src="graphics/static-recipe/hero.jpg" alt="Recipe Photo">
+            <h1 id="recipe-title">Broccoli & Mozzarella Calzones</h1>
+            <h2 id="recipe-subtitle">with Caesar Salad</h2>
+                <div id="recipe-stats">
+                    <p id="recipe-cook-time">Cook Time: 50min</p>
+                    <p id="recipe-serving-count">Servings: 4</p>
+                    <p id="recipe-cals-per-serving">Calories/Serving: 930</p>
+                </div>
+                    <h2 id="recipe-desc">These calzones are loaded with melty fresh mozzarella, creamy ricotta, and tender broccoli—balanced by a tangy tomato dipping sauce. For a refreshing side, weʼre tossing crunchy romaine and briny black olives in our take on Caesar dressing.</h2>
+                    <img id="recipe-ing-img" src="graphics/static-recipe/ingredients.png" alt="Ingredients Photo">
+                <div id="recipe-ings">
+                    <div id="recipe-ing-col-1">
+                        <p id="recipe-ing-1">- 11/2 lbs Pizza Dough</p>
+                        <p id="recipe-ing-3">- 3 cloves Garlic</p>
+                        <p id="recipe-ing-5">- 1 Romaine Lettuce Heart</p>
+                        <p id="recipe-ing-7">- 1 lb Broccoli</p>
+                        <p id="recipe-ing-9">- 1 cup Part-Skim Ricotta Cheese</p>
+                        <p id="recipe-ing-11">- 1 8-Ounce Can Tomato Sauce</p>
+                        <p id="recipe-ing-13"></p>
+                    </div>
+                    <div id="recipe-ing-col-2">
+                        <p id="recipe-ing-2">- 1/2 lb Fresh Mozzarella Cheese</p>
+                        <p id="recipe-ing-4">- 1/4 cup Grated Parmesan Cheese</p>
+                        <p id="recipe-ing-6">- 2 oz Black Cerignola Olives	</p>
+                        <p id="recipe-ing-8">- 1 Tbsp Italian Seasoning (Whole Dried Basil, Sage, Oregano, Savory, Rosemary, Thyme, & Marjoram)</p>
+                        <p id="recipe-ing-10">- 1 Lemon</p>
+                        <p id="recipe-ing-12"></p>
+                    </div>
+                </div>
+                        <img src="graphics/static-recipe/step-1.jpg" alt="Step #1 Photo" id="recipe-step-img-1">
+                            <h2 id="recipe-step-title-1">1 Prepare the ingredients:</h2>
+                            <p id="recipe-step-desc-1">Remove the dough from the refrigerator to bring to room temperature. Place an oven rack in the center of the oven, then preheat to 475°F. Wash and dry the fresh produce. Cut off and discard the bottom 1/2 inch of the broccoli stem, then roughly chop the broccoli. Peel and roughly chop the garlic. Tear the mozzarella cheese into small pieces. Quarter and deseed the lemon.</p>
+                        
+                        <img src="graphics/static-recipe/step-2.jpg" alt="Step #2 Photo" id="recipe-step-img-2">
+                            <h2 id="recipe-step-title-2">2 Cook the broccoli & make the filling:</h2>
+                            <p id="recipe-step-desc-2">In a large pan (nonstick, if you have one), heat 2 teaspoons of olive oil on medium-high until hot. Add the chopped broccoli; season with salt and pepper. Cook, stirring occasionally, 4 to 6 minutes, or until lightly browned. Add 2/3 of the chopped garlic. Cook, stirring constantly, 30 seconds to 1 minute, or until fragrant. Add 1/4 cup of water; season with salt and pepper. Cook, stirring occasionally, 2 to 3 minutes, or until the broccoli has softened and the water has cooked off. Transfer to a large bowl. Add the mozzarella cheese, ricotta cheese, half the Italian seasoning, and the juice of 1 lemon wedge; stir to combine. Season with salt and pepper. Wipe out the pan.</p>
+                        
+                        <img src="graphics/static-recipe/step-3.jpg" alt="Step #3 Photo" id="recipe-step-img-3">
+                            <h2 id="recipe-step-title-3">3 Assemble & bake the calzones:</h2>
+                            <p id="recipe-step-desc-3">Lightly oil a sheet pan. Divide the dough into 2 equal-sized portions; using your hands and a rolling pin (or wine bottle), gently stretch and roll the portions into 1⁄4-inch-thick rounds. (If the dough is resistant, let rest for 5 minutes.) Divide the filling between the centers of the rounds; fold each round in half over the filling. Using a fork, crimp the edges of the dough to seal. Transfer to the sheet pan. Using a fork, poke a few holes across the tops of the calzones to vent. Lightly drizzle the calzones with olive oil. Bake 16 to 18 minutes, or until golden brown. Transfer to a cutting board and let stand for at least 2 minutes.</p>
+                        
+                        <img src="graphics/static-recipe/step-4.jpg" alt="Step #4 Photo" id="recipe-step-img-4">
+                            <h2 id="recipe-step-title-4">4 Prepare the remaining ingredients:</h2>
+                            <p id="recipe-step-desc-4">While the calzones bake, using the flat side of your knife, smash the olives; remove and discard the pits, then roughly chop. Cut off and discard the root end of the lettuce; roughly chop the leaves. To make the dressing, in a large bowl, combine the mayonnaise, half the parmesan cheese, the juice of the remaining lemon wedges, and a drizzle of olive oil. Season with salt and pepper to taste.</p>
+                        
+                        <img src="graphics/static-recipe/step-5.jpg" alt="Step #5 Photo" id="recipe-step-img-5">
+                            <h2 id="recipe-step-title-5">5</h2>
+                            <p id="recipe-step-desc-5">While the calzones continue to bake, in the pan used to cook the broccoli, heat 2 teaspoons of olive oil on medium-high until hot. Add the remaining chopped garlic; cook, stirring constantly, 30 seconds to 1 minute, or until fragrant. Add the tomato sauce and remaining Italian seasoning. Cook, stirring frequently, 2 to 3 minutes, or until slightly thickened. Turn off the heat and season with salt and pepper to taste.</p>
+                        
+                        <img src="graphics/static-recipe/step-6.jpg" alt="Step #6 Photo" id="recipe-step-img-6">
+                            <h2 id="recipe-step-title-6">6 Make the salad & serve your dish:</h2>
+                            <p id="recipe-step-desc-6">Just before serving, add the chopped olives and lettuce to the bowl of dressing. Toss to coat; season with salt and pepper to taste. Cut the baked calzones in half. Serve with the sauce and salad on the side. Garnish with the remaining parmesan cheese.</p>
+                    <h1>Enjoy!</h1>
+    </div>
+</div>
+
+<!-- Footer -->
+
+    <footer>
+        <p>BlueBook 2020</p>
+        <a target="_blank" href="https://www.hunterhdesign.com">
+            <p>Created by: Hunter H Design</p>
+        </a>
+    </footer>
+    <script src="js/main.js"></script>
 </body>
 </html>
