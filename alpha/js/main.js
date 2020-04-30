@@ -1,10 +1,10 @@
 // Header Functions
 
-const menuBtn = document.querySelector('#menuBtn');
-const helpBtn = document.querySelector('#helpBtn');
+const header_menu_link = document.querySelector('#header-menu-link');
+const header_help_link = document.querySelector('#header-help-link');
 
-const menuOkayBtn = document.querySelector('.okay-button');
-const wframeBtn = document.querySelector('.wframe-button');
+const welcome_menu_okay_button = document.querySelector('.welcome-menu-okay-button-button');
+const welcome_wframe_button = document.querySelector('.welcome-wframe-button');
 
 const logoText = document.querySelectorAll('.logoText');
 const cards = document.querySelector('#cards');
@@ -19,29 +19,29 @@ for (let i = 0; i < 2; i++) {
     });
 };
 
-menuBtn.addEventListener('click', () => {
-    modal.hidden = false;
+header_menu_link.addEventListener('click', () => {
+    showModal();
     modal_welcome.hidden = false;
     modal_content.setAttribute('class', 'modal-content-small');
     modal_close_button.setAttribute('id', 'modal-close-small');
 });
 
-menuOkayBtn.addEventListener('click', closeAllModals);
+welcome_menu_okay_button.addEventListener('click', closeAllModals);
 
-helpBtn.addEventListener('click', () => {
-    modal.hidden = false;
+header_help_link.addEventListener('click', () => {
+    showModal();
     modal_help.hidden = false;
     document.querySelector('main').style.overflow = 'hidden';
 });
 
-wframeBtn.addEventListener('click', () => {
+welcome_wframe_button.addEventListener('click', () => {
     window.open('wframe-&-styles.html', '_blank');
 });
 
 // Modal
 
 const modal = document.querySelector('.modal');
-const modal_close_button = document.querySelector('.modalClose');
+const modal_close_button = document.querySelector('.modal-close');
 
 const modal_content = document.querySelector('.modal-content');
 const modal_welcome = document.querySelector('#modal-welcome');
@@ -49,7 +49,7 @@ const modal_recipe = document.querySelector('#modal-recipe');
 const modal_help = document.querySelector('#modal-help');
 
 function closeAllModals() {
-    modal.hidden = true;
+    hideModal();
     modal_close_button.removeAttribute('id');
     modal_welcome.hidden = true;
     modal_recipe.hidden = true;
@@ -59,6 +59,18 @@ function closeAllModals() {
 modal_close_button.addEventListener('click', () => {
     closeAllModals();
 });
+
+// Show & Hide Modal
+
+function hideModal() {
+    document.body.style.overflowY = 'auto';
+    modal.hidden = true;
+}
+
+function showModal() {
+    document.body.style.overflow = 'hidden';
+    modal.hidden = false;
+}
 
 // modal.addEventListener('click', () => {
 //     closeAllModals();
@@ -70,7 +82,7 @@ for (let i = 0; i < 6; i++) {
     card[i].addEventListener('click', () => {
         modal_help.hidden = true;
         modal_recipe.hidden = true;
-        modal.hidden = false;
+        showModal();
         modal_recipe.hidden = false;
     });
 };
@@ -80,56 +92,55 @@ function toggleModal() {
         modal.hidden = true;
     }
     else {
-        modal.hidden = false;
+        showModal();
     }
 };
 
 // Search
 
-const searchInput = document.querySelector('#searchInput');
-const searchButton = document.querySelector('#submit');
+const search_input = document.querySelector('#search-input');
+const search_button = document.querySelector('#submit');
 
-const noResults = document.querySelector('#noResults');
-const searchOkayBtn = document.querySelector('#noResults-button');
+const no_results = document.querySelector('#no-results');
+const search_okay_button = document.querySelector('#no-results-button');
 
-searchButton.addEventListener('click', nullSearchQuery);
-searchOkayBtn.addEventListener('click', clearSearch);
+search_button.addEventListener('click', nullSearchQuery);
+search_okay_button.addEventListener('click', clearSearch);
 
 function toggleSearch() {
-    if (noResults.hidden = true) {
-        noResults.hidden = false;
-        console.log('showing search');
+    if (no_results.hidden = true) {
+        no_results.hidden = false;
     }
     else {
-        console.log('running clearSearch function');
+        no_results.hidden = true
     }
 };
 
 function nullSearchQuery() {
-    noResults.hidden = false;
-    cards.hidden = true;
+    no_results.hidden = false;
+    cards.style.display = 'none';
     title.innerHTML = 'Search Results';
 };
 
 function clearSearch() {
-    noResults.hidden = true;
-    cards.hidden = false;
+    no_results.hidden = true;
+    cards.style.display = 'flex';
     title.innerHTML = 'All Recipes';
-    searchInput.value = '';
+    search_input.value = '';
 };
 
 // Filter
 
-const filterMenu = document.querySelector('.filter');
-const filterBtn = document.querySelector('#filter-button');
+const filter_menu = document.querySelector('.filter');
+const filter_button = document.querySelector('#filter-button');
 const filter_content = document.querySelector('#filter-content');
 
-filterBtn.addEventListener('click', toggleFilter);
+filter_button.addEventListener('click', toggleFilter);
 
 function toggleFilter() {
     clearSearch();
-    if (filterMenu.hasAttribute('id')) {
-        filterMenu.removeAttribute('id');
+    if (filter_menu.hasAttribute('id')) {
+        filter_menu.removeAttribute('id');
         filter_content.hidden = true;
     }
     else {
@@ -138,7 +149,7 @@ function toggleFilter() {
 };
 
 function clearFilter() {
-    filterMenu.setAttribute('id', 'filter-open');
+    filter_menu.setAttribute('id', 'filter-open');
     filter_content.removeAttribute('hidden');
 };
 

@@ -130,11 +130,11 @@ main h1, #modal-recipe h1:last-of-type, .modal:last-child, #modal-welcome h1, #m
     transform: translateY(.2rem);
 }
 
-#noResults h1 {
+#no-results h1 {
     margin: var(--mobile-margin) 0;
 }
 
-#noResults button {
+#no-results button {
     text-align: center;
     margin: 0 auto;
     padding: 1rem 2rem;
@@ -206,26 +206,32 @@ main h1, #modal-recipe h1:last-of-type, .modal:last-child, #modal-welcome h1, #m
     margin-top: 25%;
 }
 
-.modalClose {
+.modal-close {
     position: fixed;
     top: 0;
     right: 0;
     position: fixed;
     cursor: pointer;
+    z-index: 100;
 }
 
-#modal-hero img {
+.modal-hero {
+    border-radius: 1.25rem 0 0 0;
+}
+
+.modal-hero img {
     object-fit: cover;
-    width: 100%;
-    max-width: 100%;
+    width: 101%;
+    max-width: 101%;
     height: 10rem;
+    border-radius: 1.25rem 0 0 0;
 }
 
 #modal-close-small {
     top: 21%;
 }
 
-div#modal-recipe-content-div {
+div.modal-content-main {
     padding: 9%;
 }
 
@@ -271,23 +277,22 @@ div#modal-welcome button {
     color: var(--primary-black);
 }
 
-/* Help Menu */
-
-#modal-help {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
 /* Recipes */
 
 .modal-content img {
     width: 100%;
-    max-width: 70%;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: calc(var(--mobile-margin)/2);
+}
+
+.modal-content img:first-of-type {
+    width: 101%;
+}
+
+.modal-content img:nth-of-type(2), .modal-content img:nth-of-type(3), .modal-content img:nth-of-type(4), .modal-content img:nth-of-type(5), .modal-content img:nth-of-type(6), .modal-content img:nth-of-type(7) {
+    max-width: 70%;
 }
 
 #recipe-stats, #recipe-ings {
@@ -337,7 +342,7 @@ div#cards {
     border-radius: 1.25rem 0 0 1.25rem;
 }
 
-.cardContent {
+.card-content {
     float: right;
     width: 70%;
     padding: 1rem;
@@ -349,6 +354,13 @@ div#cards {
 
 .card-title, .card-subtitle, .card-desc {
     width: 100%;
+}
+
+.card-content {
+    height: 10.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-span {
@@ -370,10 +382,6 @@ div#cards {
 
 .card-mins, .card-cals {
     text-align: right;
-}
-
-.card-desc {
-    margin: .25rem 0;
 }
 
 /* Footer */
