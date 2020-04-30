@@ -25,15 +25,18 @@ h2 {font-size: 15px; font-family: 'DM Serif Display', serif;}
 h3 {font-size: 14px; font-family: 'Arimo', sans-serif; font-weight: bold;}
 p  {font-size: 14px; font-family: 'Arimo', sans-serif;}
 
+html, body, main, header, footer, .modal {
+    overflow-x: hidden;
+}
+
 body {
     background-image: url(../graphics/wallpaper.svg);
     background-repeat: repeat;
-    overflow-x: hidden;
 }
 
 /* Header / Hero */
 
-#hero img {
+#slideshow img {
     filter: blur(1px);
     height: var(--hero-height);
     width: 100%;
@@ -110,6 +113,17 @@ main h1, #modal-recipe h1:last-of-type, .modal:last-child, #modal-welcome h1, #m
     width: 85%;
     float: left;
     padding: 1rem;
+}
+
+input[type=search]{
+    -moz-appearance: none;/* older firefox */
+    -webkit-appearance: none; /* safari, chrome, edge and ie mobile */
+    appearance: none; /* rest */
+    font-size: 14px; font-family: 'Arimo', sans-serif;
+}
+
+input[type=search]:focus {
+    color: var(--primary-black);
 }
 
 .filter p {
@@ -228,7 +242,8 @@ main h1, #modal-recipe h1:last-of-type, .modal:last-child, #modal-welcome h1, #m
 }
 
 #modal-close-small {
-    top: 21%;
+    top: 10%;
+    right: 5%;
 }
 
 div.modal-content-main {
