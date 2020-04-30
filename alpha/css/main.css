@@ -8,6 +8,9 @@
     --mobile-margin: 1.5rem;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap');
+
 * {
     color: var(--primary-black);
 }
@@ -17,13 +20,14 @@ a, a:link, a:visited, a:hover, a:active {
     color: black;
 }
 
-h1 {font-size: 24px; margin: 0;}
-h2 {font-size: 15px;}
-p  {font-size: 14px;}
+h1 {font-size: 24px; font-family: 'DM Serif Display', serif; margin: 0;}
+h2 {font-size: 15px; font-family: 'DM Serif Display', serif;}
+h3 {font-size: 14px; font-family: 'Arimo', sans-serif; font-weight: bold;}
+p  {font-size: 14px; font-family: 'Arimo', sans-serif;}
 
 body {
     background-image: url(../graphics/wallpaper.svg);
-    background-repeat: repeat-y;
+    background-repeat: repeat;
     overflow-x: hidden;
 }
 
@@ -39,6 +43,7 @@ body {
     left: 0;
     -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 85%);
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 85%);
+    object-fit: cover;
 }
 
 #heroFilter {
@@ -55,6 +60,7 @@ body {
 
 #heroContent {
     position: absolute;
+    width: 100%;
     z-index: 3;
     padding: 1.5rem 1.5rem 0 1.5rem;
 }
@@ -75,7 +81,7 @@ body {
     margin-left: 1rem;
 }
 
-#heroContent h2 {
+#heroContent h2, #recipe-desc {
     clear: both;
 }
 
@@ -83,25 +89,20 @@ body {
     clear: both;
     text-align: center;
     font-weight: bold;
-    margin-top: 4.5rem;
+    margin: 4.5rem auto 0 auto;
+    max-width: 20rem;
 }
 
 /* Main */
 
 main {
-    padding: var(--hero-height) 1.5rem 1.5rem 1.5rem;
+    padding-top: var(--hero-height);
+    margin: auto;
+    max-width: 75rem;
 }
 
-main h1 {
+main h1, #modal-recipe h1:last-of-type, .modal:last-child, #modal-welcome h1, #modal-welcome a, #modal-help h2 {
     text-align: center;
-}
-
-#search, #filter {
-    margin: var(--mobile-margin) 0;
-    height: 3rem;
-    width: 100%;
-    border: var(--primary-purple) solid;
-    background-color: white;
 }
 
 #search input {
@@ -111,20 +112,21 @@ main h1 {
     padding: 1rem;
 }
 
-#filter p {
+.filter p {
     position: absolute;
     padding: .8rem 1rem;
 }
 
-#search button, #filter button {
+#search button, .filter button {
     width: 15%;
     height: 100%;
     background-color: var(--primary-purple);
     float: right;
-    transform: scale(1.02); /* This corrects the outline render issues */
+    /* transform: scale(1.02); */
+        /* This corrects the outline render issues */
 }
 
-#search button img, #filter button img {
+#search button img, .filter button img {
     transform: translateY(.2rem);
 }
 
@@ -145,6 +147,34 @@ main h1 {
     color: var(--primary-black);
 }
 
+#criteria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* max-width: 50rem; */
+}
+
+#search, .filter {
+    margin: var(--mobile-margin);
+    height: 3rem;
+    width: 100%;
+    max-width: 20rem;
+    border: var(--primary-purple) solid;
+    background-color: white;
+}
+
+#search {
+    margin-bottom: calc(var(--mobile-margin)/2) auto;
+}
+
+#filter-open {
+    height: fit-content;
+}
+
+#filter-open button {
+    height: 2.625rem;
+}
+
 /* Modal */
 
 .modal {
@@ -155,19 +185,25 @@ main h1 {
     height: 100%;
     background-color: var(--primary-black-rgba);
     z-index: 10;
-    padding: calc(var(--mobile-margin)/1.5);
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 .modal-content, .modal-content-small {
     background-color: white;
-    width: 100%;
+    width: 80%;
+    max-width: 50rem;
+    margin: var(--mobile-margin) auto;
     height: fit-content;
     border-radius: 1.25rem;
-    padding: calc(var(--mobile-margin)/1.5);
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.modal-content-small {
+    width: 80%;
+    max-width: 24rem;
+    margin-top: 25%;
 }
 
 .modalClose {
@@ -178,45 +214,47 @@ main h1 {
     cursor: pointer;
 }
 
-.modal-content img:first-of-type {
+#modal-hero img {
     object-fit: cover;
-    width: 111%;
+    width: 100%;
+    max-width: 100%;
     height: 10rem;
-    margin: calc(var(--mobile-margin)/-1.5) calc(var(--mobile-margin)/-1.5) var(--mobile-margin) calc(var(--mobile-margin)/-1.5);
 }
 
-#modalCloseSmall {
+#modal-close-small {
     top: 21%;
 }
 
-.modal-content-small {
-    margin-top: 50%;
+div#modal-recipe-content-div {
+    padding: 9%;
+}
+
+div#recipe-stats p, div#modal-recipe-content-div h2, .card-title, .card-mins, .card-cals, .card-mins-prefix, .card-cals-prefix {
+    font-weight: bold;
 }
 
 .modal h1, .modal h2, .modal h3, .modal p {
     margin-bottom: calc(var(--mobile-margin)/1.5);
 }
 
-.modal h1, .modal h2, .modal h3 {
-    font-weight: bold;
-}
-
-.modal:last-child{
-    text-align: center;
-}
-
 /* Welcome Menu */
 
 #modal-welcome {
-    margin-top: 50%;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content; */
+    padding: 1rem 3rem;
+}
+
+div#modal-welcome button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #modal-welcome * {
     margin-bottom: calc(var(--mobile-margin)/2);
-}
-
-#modal-welcome h1, #modal-welcome a {
-    text-align: center;
 }
 
 #modal-welcome h1 {
@@ -224,9 +262,10 @@ main h1 {
 }
 
 #modal-welcome button {
-    width: 75%;
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 15rem;
     padding: 1rem;
-    margin: 0 2.33rem calc(var(--mobile-margin)/2) 2.33rem;
     background-color: white;
     border: var(--primary-purple) solid .2rem;
     color: var(--primary-black);
@@ -234,30 +273,27 @@ main h1 {
 
 /* Help Menu */
 
-#modal-help h2 {
-    text-align: center;
+#modal-help {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* Recipes */
 
 .modal-content img {
     width: 100%;
+    max-width: 70%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     margin-bottom: calc(var(--mobile-margin)/2);
-}
-
-#recipe-cook-time, #recipe-serving-count, #recipe-cals-per-serving {
-    font-size: .75rem;
-    font-weight: normal;
 }
 
 #recipe-stats, #recipe-ings {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
-}
-
-#recipe-desc {
-    clear: both;
 }
 
 #recipe-ings {
@@ -268,17 +304,18 @@ main h1 {
     width: 50%;
 }
 
-#modal-recipe h1:last-of-type {
-    text-align: center;
-}
-
 /* Cards */
 
+div#cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 .card {
-    float: left;
-    width: 100%;
-    height: 10.1875rem;
-    margin-bottom: var(--mobile-margin);
+    max-width: 20rem;
+    height: 10.5rem;
+    margin: var(--mobile-margin);
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 1.25rem;
@@ -289,7 +326,12 @@ main h1 {
     float: left;
     width: 30%;
     height: 100%;
-    background-image: url(../graphics/0101_2PM_Steak-Diane_97315_SQ_hi_res.jpg);
+}
+
+.cardImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     background-size: cover;
     background-position: center;
     border-radius: 1.25rem 0 0 1.25rem;
@@ -301,21 +343,33 @@ main h1 {
     padding: 1rem;
 }
 
-.card h2, .card p {
-    float: left;
+.card-subtitle {
+    font-style: italic;
 }
 
 .card-title, .card-subtitle, .card-desc {
     width: 100%;
 }
 
-.card-mins, .card-cals {
-    float: right;
-    text-align: right;
+.card-span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.card-title, .card-subtitle, .card-mins, .card-cals, .card-minsPrefix, .card-calsPrefix {
-    font-weight: bold;
+.card-span p {
+    white-space: nowrap;
+}
+
+.card-span-line {
+    width: 50%;
+    height: 16px;
+    margin-top: -.33rem;
+    border-bottom: black dotted;
+}
+
+.card-mins, .card-cals {
+    text-align: right;
 }
 
 .card-desc {
@@ -356,4 +410,138 @@ footer a:hover p {
 footer a, footer a p {
     transition: all .1s ease-in-out;
     -webkit-transition: all .1s ease-in-out;
+}
+
+/* Filters */
+
+#filter-content {
+    padding: var(--mobile-margin);
+    padding-top: calc(var(--mobile-margin)*3);
+}
+
+.filter-section {
+    margin-bottom: var(--mobile-margin);
+}
+
+.filter-section span {
+    padding-top: .4rem;
+}
+
+.filter-section label {
+    margin: calc(var(--mobile-margin)/4) 0;
+    border: var(--primary-purple) solid;
+    padding: calc(var(--mobile-margin)/2);
+}
+
+#filter-servings label {
+    border: none
+}
+
+.filter-section:last-of-type, .filter-section label:last-of-type {
+    margin-bottom: 0;
+}
+
+#filter-servings {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#filter-servings label {
+    display: flex;
+    flex-direction: row;
+}
+
+#filter-servings h3 {
+    display: inline-flex;
+}
+
+#filter-protein {
+    display: flex;
+    flex-direction: column;
+}
+
+#filter-protein label {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+/* External */
+
+button:focus {
+    outline: none;
+}
+
+.control {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 5px;
+    padding-top: 3px;
+    cursor: pointer;
+}
+
+.control input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.control_indicator {
+    height: 30px;
+    width: 30px;
+    background: white;
+    border: .1rem solid var(--primary-purple);
+}
+
+.control:hover input ~ .control_indicator,
+.control input:focus ~ .control_indicator {
+    background: #cccccc00;
+}
+
+.control input:checked ~ .control_indicator {
+    background: var(--primary-purple);
+}
+
+.control:hover input:not([disabled]):checked ~ .control_indicator,
+.control input:checked:focus ~ .control_indicator {
+    background: var(--primary-purple);
+}
+
+.control input:disabled ~ .control_indicator {
+    background: #e6e6e6;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.control_indicator:after {
+    box-sizing: unset;
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+.control input:checked ~ .control_indicator:after {
+    display: block;
+}
+
+.control-checkbox .control_indicator:after {
+    right: 8.5%;
+    top: 16px;
+    width: 6px;
+    height: 14px;
+    border: solid #ffffff;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.control-checkbox input:disabled ~ .control_indicator:after {
+    border-color: #7b7b7b;
+}
+
+/* Media Queries */
+
+@media only screen and (min-width:800px) {
+    
 }

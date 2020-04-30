@@ -1,30 +1,15 @@
-// Init
-
-const modal = document.querySelector('.modal');
-const modalWrap = document.querySelector('.modal-content');
-const modalClose = document.querySelector('.modalClose');
-
-const modal_welcome = document.querySelector('#modal-welcome');
-const modal_recipe = document.querySelector('#modal-recipe');
-const modal_help = document.querySelector('#modal-help');
+// Header Functions
 
 const menuBtn = document.querySelector('#menuBtn');
 const helpBtn = document.querySelector('#helpBtn');
 
-const okayBtn = document.querySelector('.okay-button');
+const menuOkayBtn = document.querySelector('.okay-button');
 const wframeBtn = document.querySelector('.wframe-button');
-
-const searchInput = document.querySelector('#searchInput');
-const searchButton = document.querySelector('#submit');
-const noResults = document.querySelector('#noResults');
-const noResultsBtn = document.querySelector('#noResults-button');
 
 const logoText = document.querySelectorAll('.logoText');
 const cards = document.querySelector('#cards');
 const card = document.querySelectorAll('.card');
 const title = document.querySelector('#title');
-
-// Header Functions
 
 for (let i = 0; i < 2; i++) {
     
@@ -37,11 +22,11 @@ for (let i = 0; i < 2; i++) {
 menuBtn.addEventListener('click', () => {
     modal.hidden = false;
     modal_welcome.hidden = false;
-    modalWrap.setAttribute('class', 'modal-content-small');
-    modalClose.setAttribute('id', 'modalCloseSmall');
+    modal_content.setAttribute('class', 'modal-content-small');
+    modal_close_button.setAttribute('id', 'modal-close-small');
 });
 
-okayBtn.addEventListener('click', closeAllModals);
+menuOkayBtn.addEventListener('click', closeAllModals);
 
 helpBtn.addEventListener('click', () => {
     modal.hidden = false;
@@ -51,29 +36,40 @@ helpBtn.addEventListener('click', () => {
 
 wframeBtn.addEventListener('click', () => {
     window.open('wframe-&-styles.html', '_blank');
-})
+});
 
-// Close all Modals
+// Modal
+
+const modal = document.querySelector('.modal');
+const modal_close_button = document.querySelector('.modalClose');
+
+const modal_content = document.querySelector('.modal-content');
+const modal_welcome = document.querySelector('#modal-welcome');
+const modal_recipe = document.querySelector('#modal-recipe');
+const modal_help = document.querySelector('#modal-help');
 
 function closeAllModals() {
     modal.hidden = true;
-    modalClose.removeAttribute('id');
+    modal_close_button.removeAttribute('id');
     modal_welcome.hidden = true;
     modal_recipe.hidden = true;
     modal_help.hidden = true;
 };
 
-modalClose.addEventListener('click', () => {
+modal_close_button.addEventListener('click', () => {
     closeAllModals();
 });
 
-modalWrap.addEventListener('click', () => {
-    closeAllModals();
-});
+// modal.addEventListener('click', () => {
+//     closeAllModals();
+// });
+
+// Need to get rid of behind modal clicking
 
 for (let i = 0; i < 6; i++) {
-    
     card[i].addEventListener('click', () => {
+        modal_help.hidden = true;
+        modal_recipe.hidden = true;
         modal.hidden = false;
         modal_recipe.hidden = false;
     });
@@ -88,22 +84,66 @@ function toggleModal() {
     }
 };
 
+// Search
+
+const searchInput = document.querySelector('#searchInput');
+const searchButton = document.querySelector('#submit');
+
+const noResults = document.querySelector('#noResults');
+const searchOkayBtn = document.querySelector('#noResults-button');
 
 searchButton.addEventListener('click', nullSearchQuery);
+searchOkayBtn.addEventListener('click', clearSearch);
+
+function toggleSearch() {
+    if (noResults.hidden = true) {
+        noResults.hidden = false;
+        console.log('showing search');
+    }
+    else {
+        console.log('running clearSearch function');
+    }
+};
 
 function nullSearchQuery() {
     noResults.hidden = false;
     cards.hidden = true;
     title.innerHTML = 'Search Results';
-}
+};
 
-noResultsBtn.addEventListener('click', () => {
+function clearSearch() {
     noResults.hidden = true;
     cards.hidden = false;
     title.innerHTML = 'All Recipes';
     searchInput.value = '';
-});
+};
+
+// Filter
+
+const filterMenu = document.querySelector('.filter');
+const filterBtn = document.querySelector('#filter-button');
+const filter_content = document.querySelector('#filter-content');
+
+filterBtn.addEventListener('click', toggleFilter);
+
+function toggleFilter() {
+    clearSearch();
+    if (filterMenu.hasAttribute('id')) {
+        filterMenu.removeAttribute('id');
+        filter_content.hidden = true;
+    }
+    else {
+        clearFilter();
+    }
+};
+
+function clearFilter() {
+    filterMenu.setAttribute('id', 'filter-open');
+    filter_content.removeAttribute('hidden');
+};
+
+// Replace "With"
 
 function replaceString() {
     document.body.innerHTML = document.body.innerHTML.replace(/with/g, 'w/');
-}
+};
