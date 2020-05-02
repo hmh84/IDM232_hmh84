@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>IDM 232</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
@@ -55,19 +55,13 @@
                             </div> -->
                         <h3>Protein:</h3>
                             <div class="filter-section" id="filter-protein">
-                                <label class="control control-checkbox"><div><input type="checkbox"/><div class="control_indicator"></div></div><span>Beef</span><img src="graphics/static-filter-icons/beef.svg" alt="Beef Icon"></label>
-                                <label class="control control-checkbox"><div><input type="checkbox"/><div class="control_indicator"></div></div><span>Chicken</span><img src="graphics/static-filter-icons/chicken.svg" alt="Chicken Icon"></label>
-                                <label class="control control-checkbox"><div><input type="checkbox"/><div class="control_indicator"></div></div><span>Fish</span><img src="graphics/static-filter-icons/fish.svg" alt="Fish Icon"></label>
-                                <label class="control control-checkbox"><div><input type="checkbox"/><div class="control_indicator"></div></div><span>Pork</span><img src="graphics/static-filter-icons/pork.svg" alt="Pork Icon"></label>
-                                <label class="control control-checkbox"><div><input type="checkbox"/><div class="control_indicator"></div></div><span>Steak</span><img src="graphics/static-filter-icons/steak.svg" alt="Steak Icon"></label>
-                                <label class="control control-checkbox"><div><input type="checkbox"/><div class="control_indicator"></div></div><span>Turkey</span><img src="graphics/static-filter-icons/turkey.svg" alt="Turkey Icon"></label>
-                                <label class="control control-checkbox"><div><input type="checkbox"/><div class="control_indicator"></div></div><span>Vegetarian</span><img src="graphics/static-filter-icons/veg.svg" alt="Veg Icon"></label>
-                                
-                                <label class="control control-checkbox">
-                                    <div><input type="checkbox"/><div class="control_indicator"></div></div>
-                                    <span>Vegetarian</span>
-                                    <img src="graphics/static-filter-icons/veg.svg" alt="Veg Icon">
-                                </label>
+                                <label class="control control-checkbox"><div><input type="checkbox" checked/><div class="control_indicator"></div></div><span>Beef</span><img src="graphics/static-filter-icons/beef.svg" alt="Beef Icon"></label>
+                                <label class="control control-checkbox"><div><input type="checkbox" checked/><div class="control_indicator"></div></div><span>Chicken</span><img src="graphics/static-filter-icons/chicken.svg" alt="Chicken Icon"></label>
+                                <label class="control control-checkbox"><div><input type="checkbox" checked/><div class="control_indicator"></div></div><span>Fish</span><img src="graphics/static-filter-icons/fish.svg" alt="Fish Icon"></label>
+                                <label class="control control-checkbox"><div><input type="checkbox" checked/><div class="control_indicator"></div></div><span>Pork</span><img src="graphics/static-filter-icons/pork.svg" alt="Pork Icon"></label>
+                                <label class="control control-checkbox"><div><input type="checkbox" checked/><div class="control_indicator"></div></div><span>Steak</span><img src="graphics/static-filter-icons/steak.svg" alt="Steak Icon"></label>
+                                <label class="control control-checkbox"><div><input type="checkbox" checked/><div class="control_indicator"></div></div><span>Turkey</span><img src="graphics/static-filter-icons/turkey.svg" alt="Turkey Icon"></label>
+                                <label class="control control-checkbox"><div><input type="checkbox" checked/><div class="control_indicator"></div></div><span>Vegetarian</span><img src="graphics/static-filter-icons/veg.svg" alt="Veg Icon"></label>
                             </div>
                     </form>
                 </div>
@@ -83,7 +77,7 @@
 
         <div id="cards">
             <div class="card">
-                <div class="cardImg">
+                <div class="card-photo-area">
                     <img src="graphics/static-cards/card-img-1.jpg" alt="Recipe Photo">
                 </div>
                 <div class="card-content">
@@ -107,7 +101,7 @@
                     </div>
             </div>
             <div class="card">
-                <div class="cardImg">
+                <div class="card-photo-area">
                     <img src="graphics/static-cards/card-img-2.jpg" alt="Recipe Photo">
                 </div>
                 <div class="card-content">
@@ -131,7 +125,7 @@
                     </div>
             </div>
             <div class="card">
-                <div class="cardImg">
+                <div class="card-photo-area">
                     <img src="graphics/static-cards/card-img-3.jpg" alt="Recipe Photo">
                 </div>
                 <div class="card-content">
@@ -155,7 +149,7 @@
                     </div>
             </div>
             <div class="card">
-                <div class="cardImg">
+                <div class="card-photo-area">
                     <img src="graphics/static-cards/card-img-4.jpg" alt="Recipe Photo">
                 </div>
                 <div class="card-content">
@@ -179,7 +173,7 @@
                 </div>
             </div>
             <div class="card">
-                <div class="cardImg">
+                <div class="card-photo-area">
                     <img src="graphics/static-cards/card-img-5.jpg" alt="Recipe Photo">
                 </div>
                 <div class="card-content">
@@ -203,7 +197,7 @@
                 </div>
             </div>
             <div class="card">
-                <div class="cardImg">
+                <div class="card-photo-area">
                     <img src="graphics/static-cards/card-img-6.jpg" alt="Recipe Photo">
                 </div>
                 <div class="card-content">
@@ -231,10 +225,10 @@
 
 <!-- Modals -->
 
-<div class="modal" hidden>
+<div class="modal">
     <img class="modal-close" id="modal-close-small" src="graphics/x.svg" alt="Close Icon">
     
-    <div class="modal-content" id="modal-welcome" hidden>
+    <div class="modal-content-small" id="modal-welcome" >
         <h1>IDM 232: Alpha</h1>
         <button class="welcome-wframe-button">WireFrames & Styles</button>
         <button class="welcome-menu-okay-button-button">Continue to Static HTML</button>

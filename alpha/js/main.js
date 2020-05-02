@@ -24,8 +24,6 @@ for (let i = 0; i < 2; i++) {
 header_menu_link.addEventListener('click', () => {
     showModal();
     modal_welcome.hidden = false;
-    modal_content.setAttribute('class', 'modal-content-small');
-    modal_close_button.setAttribute('id', 'modal-close-small');
 });
 
 welcome_menu_okay_button.addEventListener('click', closeAllModals);
@@ -122,6 +120,7 @@ function nullSearchQuery() {
     no_results.hidden = false;
     cards.style.display = 'none';
     title.innerHTML = 'Search Results';
+    footerCheck_pushDown();
 };
 
 function clearSearch() {
@@ -129,6 +128,7 @@ function clearSearch() {
     cards.style.display = 'flex';
     title.innerHTML = 'All Recipes';
     search_input.value = '';
+    footerCheck_revert();
 };
 
 // Filter
@@ -175,5 +175,29 @@ setInterval(function() {
     .end()
     .appendTo('#slideshow');
 }, 12000);
+
+var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+const footer = document.querySelector('footer');
+
+function footerCheck_pushDown() {
+    if (viewportWidth >= 1100 && viewportHeight >= 640) {
+        console.log('Wide viewport, adjusting footer.');
+        footer.style.position = 'fixed';
+        footer.style.bottom = '0';
+        footer.style.left = '0';
+    } else {
+        console.log('Small viewport, no footer changes made.');
+    }
+}
+
+function footerCheck_revert() {
+        console.log('Wide viewport, adjusting footer.');
+        footer.style.position = '';
+        footer.style.bottom = '';
+        footer.style.left = '';
+}
+
+// End of JS
 
 });

@@ -47,6 +47,8 @@ body {
     -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 85%);
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 85%);
     object-fit: cover;
+    -webkit-user-select:none;
+    -webkit-touch-callout: none;
 }
 
 #heroFilter {
@@ -72,6 +74,7 @@ body {
     float: left;
     margin: 0;
     color: white;
+    font-weight: bold;
 }
 
 #heroContent p {
@@ -137,11 +140,13 @@ input[type=search]:focus {
     background-color: var(--primary-purple);
     float: right;
     /* transform: scale(1.02); */
-        /* This corrects the outline render issues */
+    /* This corrects the outline render issues */
 }
 
 #search button img, .filter button img {
     transform: translateY(.2rem);
+    -webkit-user-select:none;
+    -webkit-touch-callout: none;
 }
 
 #no-results h1 {
@@ -227,6 +232,8 @@ input[type=search]:focus {
     position: fixed;
     cursor: pointer;
     z-index: 100;
+    -webkit-user-select:none;
+    -webkit-touch-callout: none;
 }
 
 .modal-hero {
@@ -247,7 +254,7 @@ input[type=search]:focus {
 }
 
 div.modal-content-main {
-    padding: 9%;
+    padding: 4.5% 9%;
 }
 
 div#recipe-stats p, div#modal-recipe-content-div h2, .card-title, .card-mins, .card-cals, .card-mins-prefix, .card-cals-prefix {
@@ -256,6 +263,11 @@ div#recipe-stats p, div#modal-recipe-content-div h2, .card-title, .card-mins, .c
 
 .modal h1, .modal h2, .modal h3, .modal p {
     margin-bottom: calc(var(--mobile-margin)/1.5);
+}
+
+#modal-help .modal-hero img {
+    -webkit-user-select:none;
+    -webkit-touch-callout: none;
 }
 
 /* Welcome Menu */
@@ -316,6 +328,11 @@ div#modal-welcome button {
     justify-content: space-around;
 }
 
+#recipe-stats {
+    flex-direction: column;
+    text-align: center;
+}
+
 #recipe-ings {
     justify-content: space-between;
 }
@@ -342,13 +359,17 @@ div#cards {
     cursor: pointer;
 }
 
-.cardImg {
+.card:last-of-type {
+    margin-bottom: calc(var(--mobile-margin)*2);
+}
+
+.card-photo-area {
     float: left;
     width: 30%;
     height: 100%;
 }
 
-.cardImg img {
+.card-photo-area img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -405,6 +426,7 @@ footer {
     clear: both;
     background-color: var(--primary-black);
     height: 3rem;
+    width: 100%;
 }
 
 footer p {
@@ -454,6 +476,11 @@ footer a, footer a p {
     margin: calc(var(--mobile-margin)/4) 0;
     border: var(--primary-purple) solid;
     padding: calc(var(--mobile-margin)/2);
+}
+
+.filter-form img {
+    -webkit-user-select:none;
+    -webkit-touch-callout: none;
 }
 
 #filter-servings label {
@@ -565,6 +592,16 @@ button:focus {
 
 /* Media Queries */
 
-@media only screen and (min-width:800px) {
-    
+@media only screen and (min-width: 600px) {
+    #recipe-stats {
+        flex-direction: row;
+    }
+}
+
+@media only screen and (min-height: 875px) {
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
 }
