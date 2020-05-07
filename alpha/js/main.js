@@ -73,9 +73,9 @@ function showModal() {
     modal.hidden = false;
 }
 
-modal.addEventListener('click', () => {
-    closeAllModals();
-});
+// modal.addEventListener('click', () => {
+//     closeAllModals();
+// });
 
 // Need to get rid of behind modal clicking
 

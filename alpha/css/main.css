@@ -76,6 +76,10 @@ body {
     font-weight: bold;
 }
 
+#title {
+    margin: var(--mobile-margin) auto;
+}
+
 #hero-content p {
     float: right;
     color: white;
@@ -163,6 +167,7 @@ input[type=search]:focus {
     border: var(--primary-blue) solid .2rem;
     border-radius: .5rem;
     color: var(--primary-black);
+    background-color: white;
     font-family: 'Arimo', sans-serif;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -200,8 +205,8 @@ input[type=search]:focus {
     height: 2rem;
 }
 
-#search {
-    margin-bottom: calc(var(--mobile-margin)/2) auto;
+#search, .filter {
+    margin: calc(var(--mobile-margin)/2) auto;
 }
 
 #filter-open {
@@ -214,13 +219,14 @@ input[type=search]:focus {
 
 #filter-protein svg {
     fill: var(--primary-blue);
-    width: 30px;
+    width: 1.875rem;
 }
 
 /* Modal */
 
 .modal {
     position: fixed;
+    padding: 0 var(--mobile-margin);
     top: 0;
     left: 0;
     width: 100%;
@@ -249,7 +255,6 @@ input[type=search]:focus {
 
 .modal-content {
     background-color: white;
-    width: 80%;
     max-width: 50rem;
     margin: var(--mobile-margin) auto;
     height: fit-content;
@@ -306,9 +311,8 @@ input[type=search]:focus {
     border-radius: 1.25rem 0 0 0;
 }
 
-
 div.modal-content-main {
-    padding: 4.5% 9%;
+    padding: 0 var(--mobile-margin);
 }
 
 div#recipe-stats p, div#modal-recipe-content-div h2, .card-title, .card-mins, .card-cals, .card-mins-prefix, .card-cals-prefix, .modal h2 {
@@ -339,11 +343,9 @@ div#recipe-stats p, div#modal-recipe-content-div h2, .card-title, .card-mins, .c
 /* Welcome Menu */
 
 #modal-welcome {
-    width: 80%;
     max-width: 24rem;
     margin-top: 25%;
-    padding: 1rem 3rem;
-    transform: translateY(-50%);
+    padding: 1rem var(--mobile-margin);
 }
 
 #modal-welcome * {
@@ -462,7 +464,7 @@ div#cards {
 
 .card-span-line1, .card-span-line2 {
     width: 35%;
-    height: 16px;
+    height: 1rem;
     margin-top: -.2rem;
     border-bottom: black dotted;
 }
@@ -572,7 +574,7 @@ button:focus {
 .control {
     display: block;
     position: relative;
-    padding-left: 30px;
+    padding-left: 1.875rem;
     margin-bottom: 5px;
     padding-top: 3px;
     cursor: pointer;
@@ -585,8 +587,8 @@ button:focus {
 }
 
 .control_indicator {
-    height: 30px;
-    width: 30px;
+    height: 1.875rem;
+    width: 1.875rem;
     background: white;
     border: .1rem solid var(--primary-blue);
 }
@@ -598,6 +600,10 @@ button:focus {
 
 .control input:checked ~ .control_indicator {
     background: var(--primary-blue);
+}
+
+.control.control-checkbox * {
+    height: 1.875rem;
 }
 
 .control:hover input:not([disabled]):checked ~ .control_indicator,
@@ -624,7 +630,7 @@ button:focus {
 
 .control-checkbox .control_indicator:after {
     right: 8.5%;
-    top: 16px;
+    top: 1rem;
     width: 6px;
     height: 14px;
     border: solid #ffffff;
@@ -681,12 +687,18 @@ button:hover, button img:hover, .filter:hover, .filter p:first-of-type {
     #recipe-stats {
         flex-direction: row;
     }
+    div.modal-content-main {
+        padding: 0 calc(var(--mobile-margin)*2);
+    }
 }
 
 @media only screen and (min-width: 800px) {
     #hero-filter {
     background: linear-gradient(90deg, rgba(103,218,232,0.75) 0%, rgba(103,218,232,0.4) 20%, rgba(103,218,232,0.4) 80%, rgba(103,218,232,0.75) 100%);
-}
+    }
+    #modal-welcome {
+    transform: translateY(-50%);
+    }
 }
 
 @media only screen and (min-width: 1000px) {
