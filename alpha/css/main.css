@@ -1,8 +1,7 @@
 :root {
-    --primary-blue: #67DAE8;
+    --primary-blue: rgb(64, 140, 239);
     --primary-black: #2E2E2E;
-    --primary-black-rgba: rgba(46, 46, 46, .5);
-    --primary-purple: #786FFF;
+    --primary-black-rgba: rgba(46, 46, 46, .75);
 
     --hero-height: 17rem;
     --mobile-margin: 1.5rem;
@@ -51,8 +50,8 @@ body {
     -webkit-touch-callout: none;
 }
 
-#heroFilter {
-    background-color: rgba(103, 218, 232, .5);
+#hero-filter {
+    background: linear-gradient(180deg, rgba(103,218,232,0.75) 10%, rgba(103,218,232,0.5) 40%, rgba(103,218,232,0.5) 100%);
     height: var(--hero-height);
     width: 100%;
     position: absolute;
@@ -63,35 +62,38 @@ body {
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 85%);
 }
 
-#heroContent {
+#hero-content {
     position: absolute;
     width: 100%;
     z-index: 3;
     padding: 1.5rem 1.5rem 0 1.5rem;
 }
 
-#heroContent h1:first-of-type, #heroContent h2 {
+#hero-content h1:first-of-type, #hero-content h2 {
     float: left;
     margin: 0;
     color: white;
     font-weight: bold;
 }
 
-#heroContent p {
+#hero-content p {
     float: right;
-    text-decoration: underline;
     color: white;
 }
 
-#heroContent p:first-of-type {
+#hero-content p:first-of-type {
     margin-left: 1rem;
 }
 
-#heroContent h2, #recipe-desc {
+#hero-content h2, #recipe-desc {
     clear: both;
 }
 
-#heroContent h1:last-of-type {
+#recipe-desc {
+    font-weight: normal;
+}
+
+#hero-content h1:last-of-type {
     clear: both;
     text-align: center;
     font-weight: bold;
@@ -107,7 +109,7 @@ main {
     max-width: 75rem;
 }
 
-main h1, #modal-recipe h1:last-of-type, .modal:last-child, #modal-welcome h1, #modal-welcome a, #modal-help h2 {
+main h1, #modal-recipe h1:last-of-type, .modal:last-child, #modal-welcome h1, #modal-welcome a, #modal-help h2, #modal-help p:last-of-type {
     text-align: center;
 }
 
@@ -132,12 +134,13 @@ input[type=search]:focus {
 .filter p {
     position: absolute;
     padding: .8rem 1rem;
+    opacity: .70;
 }
 
 #search button, .filter button {
     width: 15%;
     height: 100%;
-    background-color: var(--primary-purple);
+    background-color: var(--primary-blue);
     float: right;
     /* transform: scale(1.02); */
     /* This corrects the outline render issues */
@@ -153,24 +156,30 @@ input[type=search]:focus {
     margin: var(--mobile-margin) 0;
 }
 
-#no-results button {
-    text-align: center;
-    margin: 0 auto;
+.button-style {
+    margin: 1rem auto;
     padding: 1rem 2rem;
     clear: both;
-    margin: var(--mobile-margin) 50% 0 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border: var(--primary-purple) solid .2rem;
+    border: var(--primary-blue) solid .2rem;
+    border-radius: .5rem;
     color: var(--primary-black);
+    font-family: 'Arimo', sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#modal-welcome button {
+    width: 100%;
+}
+
+#no-results-button {
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 #criteria {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    /* max-width: 50rem; */
 }
 
 #search, .filter {
@@ -178,8 +187,17 @@ input[type=search]:focus {
     height: 3rem;
     width: 100%;
     max-width: 20rem;
-    border: var(--primary-purple) solid;
+    border: var(--primary-blue) solid;
     background-color: white;
+}
+
+.filter {
+    font-family: 'arimo', sans-serif;
+}
+
+.control-checkbox img {
+    width: 2rem;
+    height: 2rem;
 }
 
 #search {
@@ -192,6 +210,11 @@ input[type=search]:focus {
 
 #filter-open button {
     height: 2.625rem;
+}
+
+#filter-protein svg {
+    fill: var(--primary-blue);
+    width: 30px;
 }
 
 /* Modal */
@@ -208,7 +231,23 @@ input[type=search]:focus {
     overflow-x: hidden;
 }
 
-.modal-content, .modal-content-small {
+/* #modal-hitbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-hitbox-box {
+    height: 100%;
+    width: max-content;
+    background-color: blue;
+} */
+
+.modal-content {
     background-color: white;
     width: 80%;
     max-width: 50rem;
@@ -219,21 +258,39 @@ input[type=search]:focus {
     overflow-y: auto;
 }
 
-.modal-content-small {
-    width: 80%;
-    max-width: 24rem;
-    margin-top: 25%;
-}
-
 .modal-close {
     position: fixed;
-    top: 0;
-    right: 0;
-    position: fixed;
+    top: 1rem;
+    right: 6%;
+    z-index: 15;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 3rem;
+    background-color: white;
     cursor: pointer;
-    z-index: 100;
-    -webkit-user-select:none;
-    -webkit-touch-callout: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: rotate(45deg);
+}
+
+.modal-close span {
+    position: relative;
+    z-index: 20;
+    width: .25rem;
+    height: 3rem;
+    background-color: rgb(95, 95, 95);
+    /* top: .375rem; */
+}
+
+.modal-close span:first-of-type {
+    left: .125rem;
+}
+
+.modal-close span:last-of-type {
+    left: -.125rem;
+    transform: rotate(270deg);
 }
 
 .modal-hero {
@@ -242,22 +299,19 @@ input[type=search]:focus {
 
 .modal-hero img {
     object-fit: cover;
+    object-position: 120% 67%;
     width: 101%;
     max-width: 101%;
     height: 10rem;
     border-radius: 1.25rem 0 0 0;
 }
 
-#modal-close-small {
-    top: 10%;
-    right: 5%;
-}
 
 div.modal-content-main {
     padding: 4.5% 9%;
 }
 
-div#recipe-stats p, div#modal-recipe-content-div h2, .card-title, .card-mins, .card-cals, .card-mins-prefix, .card-cals-prefix {
+div#recipe-stats p, div#modal-recipe-content-div h2, .card-title, .card-mins, .card-cals, .card-mins-prefix, .card-cals-prefix, .modal h2 {
     font-weight: bold;
 }
 
@@ -265,25 +319,31 @@ div#recipe-stats p, div#modal-recipe-content-div h2, .card-title, .card-mins, .c
     margin-bottom: calc(var(--mobile-margin)/1.5);
 }
 
+#modal-help p:last-of-type{
+    margin-bottom: 0;
+}
+
+.modal p {
+    line-height: 1.5rem;
+}
+
 #modal-help .modal-hero img {
     -webkit-user-select:none;
     -webkit-touch-callout: none;
 }
 
+#modal-welcome, #modal-help, #modal-recipe {
+    z-index: 15;
+}
+
 /* Welcome Menu */
 
 #modal-welcome {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: fit-content; */
+    width: 80%;
+    max-width: 24rem;
+    margin-top: 25%;
     padding: 1rem 3rem;
-}
-
-div#modal-welcome button {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    transform: translateY(-50%);
 }
 
 #modal-welcome * {
@@ -292,16 +352,6 @@ div#modal-welcome button {
 
 #modal-welcome h1 {
     margin-top: calc(var(--mobile-margin)/2);
-}
-
-#modal-welcome button {
-    margin: 1rem auto;
-    width: 100%;
-    max-width: 15rem;
-    padding: 1rem;
-    background-color: white;
-    border: var(--primary-purple) solid .2rem;
-    color: var(--primary-black);
 }
 
 /* Recipes */
@@ -397,6 +447,7 @@ div#cards {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-y: hidden;
 }
 
 .card-span {
@@ -409,11 +460,15 @@ div#cards {
     white-space: nowrap;
 }
 
-.card-span-line {
-    width: 50%;
+.card-span-line1, .card-span-line2 {
+    width: 35%;
     height: 16px;
-    margin-top: -.33rem;
+    margin-top: -.2rem;
     border-bottom: black dotted;
+}
+
+.card-span-line2 {
+    width: 29%;
 }
 
 .card-mins, .card-cals {
@@ -433,28 +488,13 @@ footer p {
     padding: 1.0625rem 1.5rem;
     float: left;
     color: white;
+    height: 100%;
 }
 
 footer a {
-    height: 3rem;
+    height: 100%;
     float: right;
     text-align: right;
-}
-
-footer a:hover {
-    background-color: gray;
-    color: var(--primary-black);
-}
-
-footer a:hover p {
-    color: var(--primary-black);
-}
-
-/* Hover States */
-
-footer a, footer a p {
-    transition: all .1s ease-in-out;
-    -webkit-transition: all .1s ease-in-out;
 }
 
 /* Filters */
@@ -462,6 +502,12 @@ footer a, footer a p {
 #filter-content {
     padding: var(--mobile-margin);
     padding-top: calc(var(--mobile-margin)*3);
+}
+
+#filter-button svg {
+    width: 1.75rem;
+    transform: translateX(1px);
+    margin-top: 2px;
 }
 
 .filter-section {
@@ -474,7 +520,7 @@ footer a, footer a p {
 
 .filter-section label {
     margin: calc(var(--mobile-margin)/4) 0;
-    border: var(--primary-purple) solid;
+    border: var(--primary-blue) solid;
     padding: calc(var(--mobile-margin)/2);
 }
 
@@ -542,7 +588,7 @@ button:focus {
     height: 30px;
     width: 30px;
     background: white;
-    border: .1rem solid var(--primary-purple);
+    border: .1rem solid var(--primary-blue);
 }
 
 .control:hover input ~ .control_indicator,
@@ -551,12 +597,12 @@ button:focus {
 }
 
 .control input:checked ~ .control_indicator {
-    background: var(--primary-purple);
+    background: var(--primary-blue);
 }
 
 .control:hover input:not([disabled]):checked ~ .control_indicator,
 .control input:checked:focus ~ .control_indicator {
-    background: var(--primary-purple);
+    background: var(--primary-blue);
 }
 
 .control input:disabled ~ .control_indicator {
@@ -590,11 +636,65 @@ button:focus {
     border-color: #7b7b7b;
 }
 
+/* Hovers */
+
+.card, footer a, footer a p, #header-help-link, #header-menu-link, .button-style{
+    transition: all .25s ease-in-out;
+    -webkit-transition: all .25s ease-in-out;
+}
+
+.button-style:hover{
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+#header-help-link:hover, #header-menu-link:hover {
+    color: var(--primary-black);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+footer a:hover {
+    background-color: gray;
+    color: var(--primary-black);
+}
+
+footer a:hover p {
+    color: var(--primary-black);
+}
+
+button:hover, button img:hover, .filter:hover, .filter p:first-of-type {
+    cursor: pointer;
+}
+
+.logo-text:hover, .filter p, .filter h3, #title, footer p:first-of-type, #hero-content h1:hover, .modal-content-small h1:hover, #no-results h1, #modal-recipe *:hover {
+    cursor: default;
+}
+
 /* Media Queries */
 
 @media only screen and (min-width: 600px) {
     #recipe-stats {
         flex-direction: row;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    #hero-filter {
+    background: linear-gradient(90deg, rgba(103,218,232,0.75) 0%, rgba(103,218,232,0.4) 20%, rgba(103,218,232,0.4) 80%, rgba(103,218,232,0.75) 100%);
+}
+}
+
+@media only screen and (min-width: 1000px) {
+    .modal-close {
+        top: -45.5%;
+        right: 0;
+        margin: auto 50%;
+        transform: rotate(45deg) translateX(40rem) ;
     }
 }
 

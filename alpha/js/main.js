@@ -5,17 +5,17 @@ $( document ).ready(function() {
 const header_menu_link = document.querySelector('#header-menu-link');
 const header_help_link = document.querySelector('#header-help-link');
 
-const welcome_menu_okay_button = document.querySelector('.welcome-menu-okay-button-button');
-const welcome_wframe_button = document.querySelector('.welcome-wframe-button');
+const welcome_menu_okay_button = document.querySelector('#welcome-menu-okay-button');
+const welcome_wframe_button = document.querySelector('#welcome-wframe-button');
 
-const logoText = document.querySelectorAll('.logoText');
+const logo_text = document.querySelectorAll('.logo-text');
 const cards = document.querySelector('#cards');
 const card = document.querySelectorAll('.card');
 const title = document.querySelector('#title');
 
 for (let i = 0; i < 2; i++) {
     
-    logoText[i].addEventListener('click', () => {
+    logo_text[i].addEventListener('click', () => {
         location.reload();
         return false;
     });
@@ -41,7 +41,7 @@ welcome_wframe_button.addEventListener('click', () => {
 // Modal
 
 const modal = document.querySelector('.modal');
-const modal_close_button = document.querySelector('.modal-close');
+const modal_close_button = document.querySelectorAll('.modal-close');
 
 const modal_content = document.querySelector('.modal-content');
 const modal_welcome = document.querySelector('#modal-welcome');
@@ -50,15 +50,16 @@ const modal_help = document.querySelector('#modal-help');
 
 function closeAllModals() {
     hideModal();
-    modal_close_button.removeAttribute('id');
     modal_welcome.hidden = true;
     modal_recipe.hidden = true;
     modal_help.hidden = true;
 };
 
-modal_close_button.addEventListener('click', () => {
-    closeAllModals();
-});
+for (let i = 0; i < 2; i++) {
+    modal_close_button[i].addEventListener('click', () => {
+        closeAllModals();
+    });
+};
 
 // Show & Hide Modal
 
@@ -72,9 +73,9 @@ function showModal() {
     modal.hidden = false;
 }
 
-// modal.addEventListener('click', () => {
-//     closeAllModals();
-// });
+modal.addEventListener('click', () => {
+    closeAllModals();
+});
 
 // Need to get rid of behind modal clicking
 
@@ -99,7 +100,7 @@ function toggleModal() {
 // Search
 
 const search_input = document.querySelector('#search-input');
-const search_button = document.querySelector('#submit');
+const search_button = document.querySelector('#search-button');
 
 const no_results = document.querySelector('#no-results');
 const search_okay_button = document.querySelector('#no-results-button');
@@ -159,9 +160,9 @@ function clearFilter() {
 
 // Replace "With"
 
-function replaceString() {
-    document.body.innerHTML = document.body.innerHTML.replace(/with/g, 'w/');
-};
+// function replaceString() {
+//     document.body.innerHTML = document.body.innerHTML.replace(/with/g, 'w/');
+// };
 
 // Slideshow
 
@@ -197,6 +198,17 @@ function footerCheck_revert() {
         footer.style.bottom = '';
         footer.style.left = '';
 }
+
+// KeyUp Events
+
+document.onkeyup = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 27 || evt.keyCode == 32) {
+        // Keys (27 = ESC, 32 = SpaceBar)
+            event.preventDefault();
+            closeAllModals();
+    }
+};
 
 // End of JS
 
