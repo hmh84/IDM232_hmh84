@@ -24,7 +24,7 @@ h2 {font-size: 15px; font-family: 'DM Serif Display', serif;}
 h3 {font-size: 14px; font-family: 'Arimo', sans-serif; font-weight: bold;}
 p  {font-size: 14px; font-family: 'Arimo', sans-serif;}
 
-html, body, main, header, footer, .modal {
+html, body, main, header, footer {
     overflow-x: hidden;
 }
 
@@ -115,7 +115,7 @@ main {
     max-width: 75rem;
 }
 
-main h1, #modal-recipe h1:last-of-type, .modal:last-child, #modal-welcome h1, #modal-welcome a, #modal-help h2, #modal-help p:last-of-type {
+main h1 {
     text-align: center;
 }
 
@@ -148,8 +148,6 @@ input[type=search]:focus {
     height: 100%;
     background-color: var(--primary-blue);
     float: right;
-    /* transform: scale(1.02); */
-    /* This corrects the outline render issues */
 }
 
 #search button img, .filter button img {
@@ -174,7 +172,7 @@ input[type=search]:focus {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#modal-welcome button {
+#modal-menu button {
     width: 100%;
 }
 
@@ -226,173 +224,128 @@ input[type=search]:focus {
 
 /* Modal */
 
-.modal {
+#modal-backdrop {
     position: fixed;
-    padding: 0 var(--mobile-margin);
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--primary-black-rgba);
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: .9;
     z-index: 10;
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 
-/* #modal-hitbox {
+#modal-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+    z-index: 15;
+    justify-content: center;
+    overflow-y: scroll;
+    padding: 2.5vh;
 }
-
-.modal-hitbox-box {
-    height: 100%;
-    width: max-content;
-    background-color: blue;
-} */
 
 .modal-content {
     background-color: white;
+    border-radius: 1.5rem;
+    z-index: 20;
+    width: 100%;
     max-width: 50rem;
-    margin: var(--mobile-margin) auto;
+    flex-direction: column;
     height: fit-content;
-    border-radius: 1.25rem;
-    overflow-x: hidden;
-    overflow-y: auto;
 }
 
-.modal-close {
+.modal-content-main * {
+    margin: .75rem 0;
+}
+
+#modal-help p:last-of-type, #modal-recipe h1:last-of-type {
+    text-align: center;
+}
+
+.modal-content-main {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    max-width: 40rem;
+    justify-content: center;
+    margin: auto;
+}
+
+.modal-content-main img {
+    width: 100%;
+}
+
+.modal-content-main p {
+    line-height: 1.75rem;
+}
+
+.modal-hero {
+    height: 15rem;
+}
+
+.modal-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 0 30%;
+    border-radius: 1.5rem 1.5rem 0 0;
+}
+
+#recipe-stats {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+/* Modal Close Button */
+
+#modal-close {
     position: fixed;
     top: 1rem;
     right: 6%;
-    z-index: 15;
+    z-index: 25;
     width: 5rem;
     height: 5rem;
     border-radius: 3rem;
     background-color: white;
     cursor: pointer;
-    display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transform: rotate(45deg);
+    opacity: .75;
 }
 
-.modal-close span {
+#modal-close span {
     position: relative;
     z-index: 20;
     width: .25rem;
     height: 3rem;
     background-color: rgb(95, 95, 95);
-    /* top: .375rem; */
 }
 
-.modal-close span:first-of-type {
+#modal-close span:first-of-type {
     left: .125rem;
 }
 
-.modal-close span:last-of-type {
+#modal-close span:last-of-type {
     left: -.125rem;
     transform: rotate(270deg);
 }
 
-.modal-hero {
-    border-radius: 1.25rem 0 0 0;
-}
+/* Menu */
 
-.modal-hero img {
-    object-fit: cover;
-    object-position: 120% 67%;
-    width: 101%;
-    max-width: 101%;
-    height: 10rem;
-    border-radius: 1.25rem 0 0 0;
-}
-
-div.modal-content-main {
-    padding: 0 var(--mobile-margin);
-}
-
-div#recipe-stats p, div#modal-recipe-content-div h2, .card-title, .card-mins, .card-cals, .card-mins-prefix, .card-cals-prefix, .modal h2 {
-    font-weight: bold;
-}
-
-.modal h1, .modal h2, .modal h3, .modal p {
-    margin-bottom: calc(var(--mobile-margin)/1.5);
-}
-
-#modal-help p:last-of-type{
-    margin-bottom: 0;
-}
-
-.modal p {
-    line-height: 1.5rem;
-}
-
-#modal-help .modal-hero img {
-    -webkit-user-select:none;
-    -webkit-touch-callout: none;
-}
-
-#modal-welcome, #modal-help, #modal-recipe {
-    z-index: 15;
-}
-
-/* Welcome Menu */
-
-#modal-welcome {
-    max-width: 24rem;
-    margin-top: 25%;
-    padding: 1rem var(--mobile-margin);
-}
-
-#modal-welcome * {
-    margin-bottom: calc(var(--mobile-margin)/2);
-}
-
-#modal-welcome h1 {
-    margin-top: calc(var(--mobile-margin)/2);
-}
-
-/* Recipes */
-
-.modal-content img {
-    width: 100%;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: calc(var(--mobile-margin)/2);
-}
-
-.modal-content img:first-of-type {
-    width: 101%;
-}
-
-.modal-content img:nth-of-type(2), .modal-content img:nth-of-type(3), .modal-content img:nth-of-type(4), .modal-content img:nth-of-type(5), .modal-content img:nth-of-type(6), .modal-content img:nth-of-type(7) {
-    max-width: 70%;
-}
-
-#recipe-stats, #recipe-ings {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-}
-
-#recipe-stats {
-    flex-direction: column;
+div#modal-menu {
+    margin-top: 50%;
+    transform: translateY(-150%);
     text-align: center;
-}
-
-#recipe-ings {
-    justify-content: space-between;
-}
-
-#recipe-ing-col-1, #recipe-ing-col-2 {
-    width: 50%;
+    padding: 1rem 2rem;
 }
 
 /* Cards */
@@ -436,6 +389,10 @@ div#cards {
     float: right;
     width: 70%;
     padding: 1rem;
+}
+
+.card-title, .card-span p {
+    font-weight: bold;
 }
 
 .card-subtitle {
@@ -651,7 +608,7 @@ button:focus {
 
 /* Hovers */
 
-.card, footer a, footer a p, #header-help-link, #header-menu-link, .button-style{
+.card, footer a, footer a p, #header-help-link, #header-menu-link, .button-style, #modal-close{
     transition: all .25s ease-in-out;
     -webkit-transition: all .25s ease-in-out;
 }
@@ -665,6 +622,10 @@ button:focus {
     color: var(--primary-black);
     cursor: pointer;
     text-decoration: underline;
+}
+
+#modal-close:hover {
+    opacity: 1;
 }
 
 .card:hover {
@@ -694,22 +655,22 @@ button:hover, button img:hover, .filter:hover, .filter p:first-of-type {
     #recipe-stats {
         flex-direction: row;
     }
-    div.modal-content-main {
+    /* div.modal-content-main {
         padding: 0 calc(var(--mobile-margin)*2);
-    }
+    } */
 }
 
 @media only screen and (min-width: 800px) {
     #hero-filter {
     background: linear-gradient(90deg, rgba(103,218,232,0.75) 0%, rgba(103,218,232,0.4) 20%, rgba(103,218,232,0.4) 80%, rgba(103,218,232,0.75) 100%);
     }
-    #modal-welcome {
+    #modal-menu {
     transform: translateY(-50%);
     }
 }
 
 @media only screen and (min-width: 1000px) {
-    .modal-close {
+    #modal-close {
         top: -45.5%;
         right: 0;
         margin: auto 50%;

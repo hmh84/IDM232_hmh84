@@ -5,8 +5,8 @@ $( document ).ready(function() {
 const header_menu_link = document.querySelector('#header-menu-link');
 const header_help_link = document.querySelector('#header-help-link');
 
-const welcome_menu_okay_button = document.querySelector('#welcome-menu-okay-button');
-const welcome_wframe_button = document.querySelector('#welcome-wframe-button');
+const menu_cms_button = document.querySelector('#menu-cms-button');
+const menu_continue_button = document.querySelector('#menu-continue-button');
 
 const logo_text = document.querySelectorAll('.logo-text');
 const cards = document.querySelector('#cards');
@@ -23,78 +23,60 @@ for (let i = 0; i < 2; i++) {
 
 header_menu_link.addEventListener('click', () => {
     showModal();
-    modal_welcome.hidden = false;
+    modal_menu.style.display = "flex";
 });
 
-welcome_menu_okay_button.addEventListener('click', closeAllModals);
 
 header_help_link.addEventListener('click', () => {
     showModal();
-    modal_help.hidden = false;
-    document.querySelector('main').style.overflow = 'hidden';
+    modal_help.style.display = "flex";
 });
 
-welcome_wframe_button.addEventListener('click', () => {
-    window.open('wframe-&-styles.html', '_blank');
+menu_cms_button.addEventListener('click', () => {
+    window.open('cms.php', '_blank');
 });
 
 // Modal
 
-const modal = document.querySelector('.modal');
-const modal_close_button = document.querySelectorAll('.modal-close');
+const modal_backdrop = document.querySelector('#modal-backdrop');
+const modal_container = document.querySelector('#modal-container');
+const modal_close_button = document.querySelector('#modal-close');
 
 const modal_content = document.querySelector('.modal-content');
-const modal_welcome = document.querySelector('#modal-welcome');
+const modal_menu = document.querySelector('#modal-menu');
 const modal_recipe = document.querySelector('#modal-recipe');
 const modal_help = document.querySelector('#modal-help');
 
 function closeAllModals() {
-    hideModal();
-    modal_welcome.hidden = true;
-    modal_recipe.hidden = true;
-    modal_help.hidden = true;
+    modal_menu.style.display = "none";
+    modal_recipe.style.display = "none";
+    modal_help.style.display = "none";
+    
+    modal_backdrop.style.display = "none";
+    modal_container.style.display = "none";
+    modal_close_button.style.display = "none";
+    
+    document.querySelector('#html').style.overflowY = "auto";
 };
 
-for (let i = 0; i < 2; i++) {
-    modal_close_button[i].addEventListener('click', () => {
-        closeAllModals();
-    });
-};
-
-// Show & Hide Modal
-
-function hideModal() {
-    document.body.style.overflowY = 'auto';
-    modal.hidden = true;
-}
-
-function showModal() {
-    document.body.style.overflow = 'hidden';
-    modal.hidden = false;
-}
-
-// modal.addEventListener('click', () => {
-//     closeAllModals();
-// });
-
+menu_continue_button.addEventListener('click', closeAllModals);
+modal_close_button.addEventListener('click', closeAllModals);
+// modal_recipe.addEventListener('click', closeAllModals);
 // Need to get rid of behind modal clicking
 
-for (let i = 0; i < 6; i++) {
+for (let i = 0; i < 37; i++) {
+    
     card[i].addEventListener('click', () => {
-        modal_help.hidden = true;
-        modal_recipe.hidden = true;
-        showModal();
-        modal_recipe.hidden = false;
-    });
-};
+        modal_menu.style.display = "none";
+        modal_help.style.display = "none";
+        modal_recipe.style.display = "flex";
+        
+        modal_backdrop.style.display = "flex";
+        modal_container.style.display = "flex";
+        modal_close_button.style.display = "flex";
 
-function toggleModal() {
-    if (modal.hidden = false) {
-        modal.hidden = true;
-    }
-    else {
-        showModal();
-    }
+        document.querySelector('#html').style.overflowY = "hidden";
+    });
 };
 
 // Search
@@ -158,12 +140,6 @@ function clearFilter() {
     filter_content.removeAttribute('hidden');
 };
 
-// Replace "With"
-
-// function replaceString() {
-//     document.body.innerHTML = document.body.innerHTML.replace(/with/g, 'w/');
-// };
-
 // Slideshow
 
 $("#slideshow > img:gt(0)").hide();
@@ -193,7 +169,6 @@ function footerCheck_pushDown() {
 }
 
 function footerCheck_revert() {
-        console.log('Wide viewport, adjusting footer.');
         footer.style.position = '';
         footer.style.bottom = '';
         footer.style.left = '';

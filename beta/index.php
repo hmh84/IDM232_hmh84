@@ -1,8 +1,23 @@
+<?php
+    // Step 1 Open a connection to DB
+    require 'include/db.php';
+
+    // Step 2 Perform a DB table query
+    $table = 'recipes';
+    $query ="SELECT * FROM {$table}";
+    $result = mysqli_query($connection, $query);
+
+    // Check for errors in SQL statement
+    if (!$result ) {
+        die ('Database query failed');
+    }
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html">
 <head>
     <meta charset="UTF-8">
-    <title>IDM 232</title>
+    <title>IDM 232 - Beta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
@@ -74,170 +89,61 @@
         </div>
 
 <!-- Main - Cards -->
+<div id="cards">
 
-        <div id="cards">
+<?php
+    while($row = mysqli_fetch_assoc($result)) {
+    
+    ?>
+
             <div class="card">
                 <div class="card-photo-area">
-                    <img src="graphics/cards/card-img-1.jpg" alt="Recipe Photo">
+                    <img src="graphics/cards/<?php echo $row['main_img']; ?>" alt="Recipe #<?php echo $row['id']; ?> Photo">
                 </div>
                 <div class="card-content">
                     <div class="card-area-name">
-                        <h2 class="card-title">Ancho-Orange Chicken</h2>
-                        <p  class="card-subtitle">w/ Kale, Rice, & Roasted Carrots</p>
+                        <h2 class="card-title"><?php echo $row['title']; ?></h2>
+                        <p  class="card-subtitle"><?php echo $row['subtitle']; ?></p>
                     </div>
-                        <p  class="card-desc">Weʼre amping up chicken breasts with a  glaze of smo…</p>
+                        <p  class="card-desc"><?php echo $row['description']; ?></p>
                     <div class="card-area-stats">
                         <div class="card-span">
                             <p  class="card-mins-prefix">Cook Time</p>
                             <div class="card-span-line1"></div>
-                            <p  class="card-mins">45mins</p>
+                            <p  class="card-mins"><?php echo $row['cook_time']; ?></p>
                         </div>
                         <div class="card-span">
                             <p  class="card-cals-prefix">Calories/Serving</p>
                             <div class="card-span-line2"></div>
-                            <p  class="card-cals">600</p>
+                            <p  class="card-cals"><?php echo $row['cal_per_serving']; ?></p>
                         </div>
                     </div>
                     </div>
             </div>
-            <div class="card">
-                <div class="card-photo-area">
-                    <img src="graphics/cards/card-img-2.jpg" alt="Recipe Photo">
-                </div>
-                <div class="card-content">
-                    <div class="card-area-name">
-                        <h2 class="card-title">Beef Medallions & Mushroom Sauce</h2>
-                        <p  class="card-subtitle">w/ Mashed Potatoes</p>
-                    </div>
-                        <p  class="card-desc">In this easy recipe, inspired by steak Diane (an American...</p>
-                    <div class="card-area-stats">
-                        <div class="card-span">
-                            <p  class="card-mins-prefix">Cook Time</p>
-                            <div class="card-span-line1"></div>
-                            <p  class="card-mins">40mins</p>
-                        </div>
-                        <div class="card-span">
-                            <p  class="card-cals-prefix">Calories/Serving</p>
-                            <div class="card-span-line2"></div>
-                            <p  class="card-cals">700</p>
-                        </div>
-                    </div>
-                    </div>
-            </div>
-            <div class="card">
-                <div class="card-photo-area">
-                    <img src="graphics/cards/card-img-3.jpg" alt="Recipe Photo">
-                </div>
-                <div class="card-content">
-                    <div class="card-area-name">
-                        <h2 class="card-title">Broccoli & Basil Pesto Sandwiches</h2>
-                        <p  class="card-subtitle">w/ Romaine & Citrus Salad</p>
-                    </div>
-                        <p  class="card-desc">These Italian focaccia sandwiches are layered...</p>
-                    <div class="card-area-stats">
-                        <div class="card-span">
-                            <p  class="card-mins-prefix">Cook Time</p>
-                            <div class="card-span-line1"></div>
-                            <p  class="card-mins">45mins</p>
-                        </div>
-                        <div class="card-span">
-                            <p  class="card-cals-prefix">Calories/Serving</p>
-                            <div class="card-span-line2"></div>
-                            <p  class="card-cals">910</p>
-                        </div>
-                    </div>
-                    </div>
-            </div>
-            <div class="card">
-                <div class="card-photo-area">
-                    <img src="graphics/cards/card-img-4.jpg" alt="Recipe Photo">
-                </div>
-                <div class="card-content">
-                    <div class="card-area-name">
-                        <h2 class="card-title">Broccoli & Mozzarella Calzones</h2>
-                        <p  class="card-subtitle">w/ Caesar Salad</p>
-                    </div>
-                    <p  class="card-desc">These calzones are loaded with melty fresh mozza...</p>
-                    <div class="card-area-stats">
-                        <div class="card-span">
-                            <p  class="card-mins-prefix">Cook Time</p>
-                            <div class="card-span-line1"></div>
-                            <p  class="card-mins">450mins</p>
-                        </div>
-                        <div class="card-span">
-                            <p  class="card-cals-prefix">Calories/Serving</p>
-                            <div class="card-span-line2"></div>
-                            <p  class="card-cals">930</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-photo-area">
-                    <img src="graphics/cards/card-img-5.jpg" alt="Recipe Photo">
-                </div>
-                <div class="card-content">
-                    <div class="card-area-name">
-                        <h2 class="card-title">Mushroom & Potato Tacos</h2>
-                        <p  class="card-subtitle">w/ Romaine & Orange Salad</p>
-                    </div>
-                    <p class="card-desc">For this hearty vegetarian meal, weʼre filling soft flour tortillas with...</p>
-                    <div class="card-area-stats">
-                        <div class="card-span">
-                            <p  class="card-mins-prefix">Cook Time</p>
-                            <div class="card-span-line1"></div>
-                            <p  class="card-mins">35mins</p>
-                        </div>
-                        <div class="card-span">
-                            <p  class="card-cals-prefix">Calories/Serving</p>
-                            <div class="card-span-line2"></div>
-                            <p  class="card-cals">650</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-photo-area">
-                    <img src="graphics/cards/card-img-6.jpg" alt="Recipe Photo">
-                </div>
-                <div class="card-content">
-                    <div class="card-area-name">
-                        <h2 class="card-title">Parmesan-Crusted Chicken</h2>
-                        <p  class="card-subtitle">w/ Mashed Sweet Potatoes & Roasted Broccoli</p>
-                    </div>
-                    <p  class="card-desc">In this simple, seasonal recipe, you'll coat chicken in a...</p>
-                    <div class="card-area-stats">
-                        <div class="card-span">
-                            <p  class="card-mins-prefix">Cook Time</p>
-                            <div class="card-span-line1"></div>
-                            <p  class="card-mins">30mins</p>
-                        </div>
-                        <div class="card-span">
-                            <p  class="card-cals-prefix">Calories/Serving</p>
-                            <div class="card-span-line2"></div>
-                            <p  class="card-cals">610</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <?php
+    }
+    // End PHP while loop
+    
+    // Step 4 Release returned data
+    mysqli_free_result($result);
+    
+    // Step 5 Close the database connection
+    mysqli_close($connection);
+    ?>
+    </div>
     </main>
 
 <!-- Modals -->
 
-<div class="modal">
-    <!-- <div id="modal-hitbox">
-        <div class="modal-hitbox-box"></div>
-        <div class="modal-hitbox-box"></div>
-    </div> -->
-    
-    <div class="modal-content" id="modal-welcome">
-        <h1>IDM 232: Alpha</h1>
-        <button class="button-style" id="welcome-wframe-button">WireFrames & Styles</button>
-        <button class="button-style" id="welcome-menu-okay-button">Continue to Static HTML</button>
+<div id="modal-backdrop" style="display: none"></div>
+<div id="modal-container" style="display: none">
+    <div id="modal-close" style="display: none"><span></span><span></span></div>
+    <div class="modal-content" id="modal-menu" style="display: none">
+        <h1>Menu</h1>
+        <button class="button-style" id="menu-cms-button">CMS Admin</button>
+        <button class="button-style" id="menu-continue-button">Continue to BlueBook</button>
     </div>
-    <div class="modal-content" id="modal-help" hidden>
-        <div class="modal-close"><span></span><span></span></div>
+    <div class="modal-content" id="modal-help" style="display: none">
         <div class="modal-hero">
             <img src="graphics/modal-heros/help.jpg" alt="Help Photo">
         </div>
@@ -270,8 +176,7 @@
             <p>If you haven’t found your answer, you can reach us <a href=""><strong>here.</strong></a></p>
         </div>
     </div>
-    <div class="modal-content" id="modal-recipe" hidden>
-        <div class="modal-close"><span></span><span></span></div>
+    <div class="modal-content" id="modal-recipe" style="display: none">
         <div class="modal-hero">
             <img id="recipe-hero" src="graphics/modal-heros/hero.jpg" alt="Recipe Photo">
         </div>
