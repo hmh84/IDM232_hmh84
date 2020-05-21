@@ -546,6 +546,27 @@ footer a {
     justify-content: space-between;
 }
 
+#filter-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+#filter-actions button {
+    color: var(--primary-blue);
+    background-color: white;
+    width: 8rem;
+    margin: 0;
+    padding: .5rem 1rem;
+}
+
+#filter-actions button:hover {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
 /* External */
 
 button:focus {

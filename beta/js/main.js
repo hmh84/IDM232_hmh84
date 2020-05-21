@@ -143,8 +143,28 @@ function clearSearch() {
 const filter_menu = document.querySelector('.filter');
 const filter_hitbox = document.querySelector('#filter-hitbox');
 const filter_content = document.querySelector('#filter-content');
+const filter_clear_button = document.querySelector('#filter-clear');
+const filter_submit_button = document.querySelector('#filter-submit');
+const filter_ranges = document.querySelectorAll('.range-1-slider');
+
+const filter_checkboxes = document.querySelectorAll('.filter-checkbox');
 
 filter_hitbox.addEventListener('click', toggleFilter);
+filter_clear_button.addEventListener('click', clearFilter);
+filter_submit_button.addEventListener('click', submitFilterQuery);
+
+function clearFilter() {
+    for (let i = 0; i < filter_checkboxes.length; i++) {
+        filter_checkboxes[i].checked = true;
+    }
+    filter_ranges[0].value=20;
+    filter_ranges[1].value=60;
+    submitFilterQuery();
+};
+
+function submitFilterQuery() {
+    console.log('Queries not hooked up yet..');
+}
 
 function toggleFilter() {
     clearSearch();
@@ -165,7 +185,7 @@ function toggleFilter() {
 function showFilter() {
     filter_menu.removeAttribute('closed')
     filter_menu.setAttribute('opened', 'true');
-    filter_menu.style.height = "45rem";
+    filter_menu.style.height = "48.5rem";
     filter_content.style.display = "block";
     setTimeout(function(){
         filter_content.style.opacity = 1;
