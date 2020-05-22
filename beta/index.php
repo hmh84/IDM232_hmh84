@@ -67,8 +67,8 @@
                             <section class="range-slider">
                                 <span class="rangeValues"></span>
                                 <div class="range-wrapper">
-                                    <input class="range-1-slider" value="20" min="20" max="60" step="5" type="range">
-                                    <input class="range-1-slider" value="60" min="20" max="60" step="5" type="range">
+                                    <input class="range-1-slider" slider1 value="20" min="20" max="60" step="5" type="range">
+                                    <input class="range-1-slider" slider2 value="60" min="20" max="60" step="5" type="range">
                                 </div>
                             </section>
                         <h3>Protein:</h3>
