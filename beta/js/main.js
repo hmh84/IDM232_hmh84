@@ -5,7 +5,8 @@ $( document ).ready(function() {
 const header_menu_link = document.querySelector('#header-menu-link');
 const header_help_link = document.querySelector('#header-help-link');
 
-const menu_cms_button = document.querySelector('#menu-cms-button');
+const menu_recipe_cms_button = document.querySelector('#menu-recipe-cms-button');
+const menu_user_cms_button = document.querySelector('#menu-user-cms-button');
 const menu_continue_button = document.querySelector('#menu-continue-button');
 
 const logo_text = document.querySelectorAll('.logo-text');
@@ -36,8 +37,12 @@ header_help_link.addEventListener('click', () => {
     modal_help.style.display = "flex";
 });
 
-menu_cms_button.addEventListener('click', () => {
-    window.open('cms.php', '_blank');
+menu_recipe_cms_button.addEventListener('click', () => {
+    window.open('admin/cms-recipes.php', '_blank');
+});
+
+menu_user_cms_button.addEventListener('click', () => {
+    window.open('admin/cms-users.php', '_blank');
 });
 
 // Modal
@@ -143,14 +148,14 @@ function clearSearch() {
 const filter_menu = document.querySelector('.filter');
 const filter_hitbox = document.querySelector('#filter-hitbox');
 const filter_content = document.querySelector('#filter-content');
-const filter_clear_button = document.querySelector('#filter-clear');
+const filter_reset_button = document.querySelector('#filter-reset');
 const filter_submit_button = document.querySelector('#filter-submit');
 const filter_ranges = document.querySelectorAll('.range-1-slider');
 
 const filter_checkboxes = document.querySelectorAll('.filter-checkbox');
 
 filter_hitbox.addEventListener('click', toggleFilter);
-filter_clear_button.addEventListener('click', clearFilter);
+filter_reset_button.addEventListener('click', clearFilter);
 filter_submit_button.addEventListener('click', submitFilterQuery);
 
 function clearFilter() {
@@ -185,7 +190,7 @@ function toggleFilter() {
 function showFilter() {
     filter_menu.removeAttribute('closed')
     filter_menu.setAttribute('opened', 'true');
-    filter_menu.style.height = "48.5rem";
+    filter_menu.style.height = "756.78px";
     filter_content.style.display = "block";
     setTimeout(function(){
         filter_content.style.opacity = 1;
@@ -241,6 +246,14 @@ document.onkeyup = function(evt) {
         // Keys (27 = ESC)
             event.preventDefault();
             closeAllModals();
+    }
+};
+
+document.onkeyup = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 90) {
+        // Keys (27 = P)
+            // event.preventDefault();
     }
 };
 

@@ -1,3 +1,5 @@
+/* Initializers */
+
 :root {
     --primary-blue: rgb(64, 140, 239);
     --primary-black: #2E2E2E;
@@ -5,6 +7,7 @@
 
     --hero-height: 17rem;
     --mobile-margin: 1.5rem;
+    --standard-radius: .65rem;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
@@ -19,13 +22,27 @@ a, a:link, a:visited, a:hover, a:active {
     color: black;
 }
 
+/* Font Stuff */
+
 h1 {font-size: 24px; font-family: 'DM Serif Display', serif; margin: 0;}
 h2 {font-size: 15px; font-family: 'DM Serif Display', serif;}
-h3 {font-size: 14px; font-family: 'Arimo', sans-serif; font-weight: bold;}
+h3 {font-size: 14px; font-family: 'Arimo', sans-serif;}
 p  {font-size: 14px; font-family: 'Arimo', sans-serif;}
+
+.modal-content-main h2 {font-size: 1.25rem;}
+#recipe-title          {font-size: 1.5rem;}
+.modal-content-main p  {line-height: 1.75rem;}
 
 html, body, main, header, footer {
     overflow-x: hidden;
+}
+
+main h1, #hero-content h1:last-of-type, #modal-help p:last-of-type, #modal-recipe h1:last-of-type, div#modal-menu {
+    text-align: center;
+}
+
+.card-title, .card-span p, h3, .modal-content-main h2, #recipe-stats, #hero-content h1:first-of-type, #hero-content h2, #hero-content h1:last-of-type {
+    font-weight: bold;
 }
 
 body {
@@ -74,7 +91,6 @@ body {
     float: left;
     margin: 0;
     color: white;
-    font-weight: bold;
 }
 
 #title {
@@ -100,8 +116,6 @@ body {
 
 #hero-content h1:last-of-type {
     clear: both;
-    text-align: center;
-    font-weight: bold;
     margin: 4.5rem auto 0 auto;
     max-width: 20rem;
     color: white;
@@ -113,10 +127,6 @@ main {
     padding-top: var(--hero-height);
     margin: auto;
     max-width: 75rem;
-}
-
-main h1 {
-    text-align: center;
 }
 
 #search input {
@@ -165,7 +175,7 @@ input[type=search]:focus {
     padding: 1rem 2rem;
     clear: both;
     border: var(--primary-blue) solid .2rem;
-    border-radius: .5rem;
+    border-radius: var(--standard-radius);
     color: var(--primary-black);
     background-color: white;
     font-family: 'Arimo', sans-serif;
@@ -193,6 +203,7 @@ input[type=search]:focus {
     width: 100%;
     max-width: 20rem;
     border: var(--primary-blue) solid;
+    border-radius: var(--standard-radius);
     background-color: white;
 }
 
@@ -207,6 +218,7 @@ input[type=search]:focus {
 
 #search, .filter {
     margin: calc(var(--mobile-margin)/2) auto;
+    border-radius: var(--standard-radius);
 }
 
 #filter-protein svg {
@@ -258,10 +270,6 @@ input[type=search]:focus {
     margin: .75rem 0;
 }
 
-#modal-help p:last-of-type, #modal-recipe h1:last-of-type {
-    text-align: center;
-}
-
 .modal-content-main {
     padding: 2rem;
     display: flex;
@@ -275,19 +283,6 @@ input[type=search]:focus {
 
 .modal-content-main img {
     width: 100%;
-}
-
-.modal-content-main p {
-    line-height: 1.75rem;
-}
-
-.modal-content-main h2 {
-    font-weight: bold;
-    font-size: 1.25rem;
-}
-
-#recipe-title {
-    font-size: 1.5rem;
 }
 
 .modal-hero {
@@ -306,7 +301,6 @@ input[type=search]:focus {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    font-weight: bold;
 }
 
 /* Modal Close Button */
@@ -352,7 +346,6 @@ div#modal-menu {
     margin: auto;
     top: -20vh;
     transform: translateY(-50%);
-    text-align: center;
     padding: 1rem 2rem;
     max-width: 22rem;
 }
@@ -398,10 +391,6 @@ div#cards {
     float: right;
     width: 70%;
     padding: 1rem;
-}
-
-.card-title, .card-span p {
-    font-weight: bold;
 }
 
 .card-subtitle {
@@ -474,6 +463,10 @@ footer a {
 
 /* Filters */
 
+#filter-hitbox, #search-input {
+    border-radius: var(--standard-radius) 0 0 var(--standard-radius);
+}
+
 #filter-hitbox {
     position: absolute;
     height: 2.625rem;
@@ -483,7 +476,7 @@ footer a {
 
 #filter-content {
     padding: var(--mobile-margin);
-    padding-top: calc(var(--mobile-margin)*3);
+    padding-top: calc(var(--mobile-margin)*2);
     opacity: 0;
 }
 
@@ -491,6 +484,11 @@ footer a {
     width: 1.75rem;
     transform: translateX(1px);
     margin-top: 2px;
+    fill: white;
+}
+
+#filter-button, #search-button {
+    border-radius: 0 0 0 var(--standard-radius);
 }
 
 .filter-section {
@@ -504,6 +502,7 @@ footer a {
 .filter-section label {
     margin: calc(var(--mobile-margin)/4) 0;
     border: var(--primary-blue) solid;
+    border-radius: var(--standard-radius);
     padding: calc(var(--mobile-margin)/2);
 }
 
@@ -516,7 +515,7 @@ footer a {
     border: none
 }
 
-.filter-section:last-of-type, .filter-section label:last-of-type {
+.filter-section:last-of-type {
     margin-bottom: 0;
 }
 
@@ -551,7 +550,7 @@ footer a {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 1rem;
+    margin-top: calc(var(--mobile-margin)/4);
 }
 
 #filter-actions button {
@@ -598,10 +597,12 @@ button:focus {
 .control:hover input ~ .control_indicator,
 .control input:focus ~ .control_indicator {
     background: #cccccc00;
+    border-radius: .25rem;
 }
 
 .control input:checked ~ .control_indicator {
     background: var(--primary-blue);
+    border-radius: .25rem;
 }
 
 .control.control-checkbox * {
@@ -752,9 +753,6 @@ button:hover, button img:hover, #filter-hitbox {
     #recipe-stats {
         flex-direction: row;
     }
-    /* div.modal-content-main {
-        padding: 0 calc(var(--mobile-margin)*2);
-    } */
 }
 
 @media only screen and (min-width: 800px) {
