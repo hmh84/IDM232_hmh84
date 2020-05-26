@@ -34,7 +34,7 @@
             </div>
             <div id="hero-content">
                 <h1 class="logo-text">BlueBook</h1>
-                <p id="header-help-link">Help</p>
+                <!-- <p id="header-help-link">Help</p> -->
                 <p id="header-menu-link">Menu</p>
                 <h2 class="logo-text">Let's get cooking.</h2>
                 <h1>BlueBook is a company dedicated to bringing you high quality meals made in simple ways.</h1>
@@ -48,13 +48,14 @@
         <h1>CMS - All Blue Book CMS Users</h1>
         <div id="cms-wrapper">
             <ul id="cms-all-recipies">
+            <h1 class="area-title">All Users</h1>
                 <?php
                 if ($result > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                 ?>
                         <button>
                             <div class="cms-card-img">
-                                <img src="../graphics/users/<?php echo $row['profile_pic'] ?>" alt="<?php echo $row['profile_pic'] ?>">
+                                <img src="../graphics/users/user.png" alt="Profile Pic">
                             </div>
                             <div class="cms-card-content">
                                 <?php echo
@@ -73,6 +74,7 @@
             </ul>
             <div id="cms-form">
                 <form action="../include/cms-user-handler.php" method="POST">
+                <h1 class="area-title">Create a User</h1>
                     <label for="name">Name:</label>
                     <input type="text" name="name" placeholder="First Name">
                     <label for="username">Username:</label>
@@ -81,11 +83,23 @@
                     <input type="text" name="password" placeholder="Password">
                     <label for="role">Role of operator:</label>
                     <input type="text" name="role" placeholder="Admin/User">
-                        <button type="submit" name="submit">+ Add User</button>
-                </form>
+                        <button id="form-submit" type="submit" name="submit">+ Add User</button>
+                    </form>
+                    <!-- <button id="form-clear" name="reset">Clear</button> -->
             </div>
         </div>
     </main>
+
+<div id="modal-backdrop" style="display: none"></div>
+<div class="modal-close" style="display: none; top: 105%;"><span></span><span></span></div>
+<div id="modal-container" style="display: none">
+    <div class="modal-content" id="modal-menu" style="display: none">
+        <h1>Menu</h1>
+        <a href="../index.php"><button class="button-style">Home</button></a>
+        <a href="cms-recipes.php"><button class="button-style" id="menu-user-cms-button">Recipe CMS</button></a>
+        <button class="button-style" id="menu-continue-button">Close</button>
+    </div>
+</div>
 
     <footer>
         <p>BlueBook 2020</p>
@@ -93,6 +107,6 @@
             <p>Created by: Hunter H Design</p>
         </a>
     </footer>
-    <script src="../js/main.js" type="text/javascript"></script>
+    <script src="../js/cms.js" type="text/javascript"></script>
 </body>
 </html>

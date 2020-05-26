@@ -34,7 +34,7 @@
             </div>
             <div id="hero-content">
                 <h1 class="logo-text">BlueBook</h1>
-                <p id="header-help-link">Help</p>
+                <!-- <p id="header-help-link">Help</p> -->
                 <p id="header-menu-link">Menu</p>
                 <h2 class="logo-text">Let's get cooking.</h2>
                 <h1>BlueBook is a company dedicated to bringing you high quality meals made in simple ways.</h1>
@@ -45,9 +45,11 @@
 <!-- Main - Search & Filter -->
 
     <main>
-        <h1>CMS - All Blue Book Recipes</h1>
+        <h1>CMS for Recipes</h1>
         <div id="cms-wrapper">
             <ul id="cms-all-recipes">
+                <h1 class="area-title">All Recipes</h1>
+                <br>
                 <?php
                 if ($result > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -70,7 +72,7 @@
             </ul>
             <div id="cms-form">
                 <form action="../include/cms-recipe-handler.php" method="POST">
-                <h1 id="form-title">Create a Recipe</h1>
+                <h1 class="area-title">Create a Recipe</h1>
                     <label for="title">Title</label>
                     <input type="text" name="title" placeholder="Title">
                     
@@ -126,12 +128,23 @@
         </div>
     </main>
 
+<div id="modal-backdrop" style="display: none"></div>
+<div class="modal-close" style="display: none; top: 105%;"><span></span><span></span></div>
+<div id="modal-container" style="display: none">
+    <div class="modal-content" id="modal-menu" style="display: none">
+        <h1>Menu</h1>
+        <a href="../index.php"><button class="button-style">Home</button></a>
+        <a href="../admin/cms-users.php"><button class="button-style" id="menu-user-cms-button">User CMS</button></a>
+        <button class="button-style" id="menu-continue-button">Close</button>
+    </div>
+</div>
+
     <footer>
         <p>BlueBook 2020</p>
         <a target="_blank" href="https://www.hunterhdesign.com">
             <p>Created by: Hunter H Design</p>
         </a>
     </footer>
-    <script src="../js/main.js" type="text/javascript"></script>
+    <script src="../js/cms.js" type="text/javascript"></script>
 </body>
 </html>

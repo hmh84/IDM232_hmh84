@@ -1,9 +1,20 @@
 $( document ).ready(function() {
 
+        // CMS Form
+
+        // const form_clear = document.querySelector('#form-clear');
+        // const form_inputs = document.getElementsByTagName('label');
+        // console.log(form_inputs);
+    
+        // form_clear.addEventListener('click', () => {
+        //     for (let i = 0; i < form_inputs.length; i++) {
+        //         form_inputs[i].value = null;
+        //     };
+        // })
+
     // Header Functions
     
     const header_menu_link = document.querySelector('#header-menu-link');
-    const header_help_link = document.querySelector('#header-help-link');
     
     const menu_continue_button = document.querySelector('#menu-continue-button');
     
@@ -13,7 +24,6 @@ $( document ).ready(function() {
     const title = document.querySelector('#title');
     
     for (let i = 0; i < logo_text.length; i++) {
-        
         logo_text[i].addEventListener('click', () => {
             location.reload();
             return false;
@@ -29,12 +39,6 @@ $( document ).ready(function() {
             },250);
     });
     
-    
-    header_help_link.addEventListener('click', () => {
-        showModal();
-        modal_help.style.display = "flex";
-    });
-    
     // Modal
     
     const modal_backdrop = document.querySelector('#modal-backdrop');
@@ -42,12 +46,8 @@ $( document ).ready(function() {
     const modal_close_button = document.querySelector('.modal-close');
     
     const modal_menu = document.querySelector('#modal-menu');
-    const modal_recipe = document.querySelector('#modal-recipe');
-    const modal_help = document.querySelector('#modal-help');
     
     function closeAllModals() {
-        modal_recipe.style.display = "none";
-        modal_help.style.display = "none";
         modal_menu.style.top = "-20vh"
         hideModal();
         setTimeout(function(){
@@ -85,107 +85,6 @@ $( document ).ready(function() {
     modal_close_button.addEventListener('click', closeAllModals);
     // modal_recipe.addEventListener('click', closeAllModals);
     // Need to get rid of behind modal clicking
-    
-    for (let i = 0; i < card.length; i++) {
-        
-        card[i].addEventListener('click', () => {
-            modal_menu.style.display = "none";
-            modal_help.style.display = "none";
-            modal_recipe.style.display = "flex";
-            
-            showModal();
-            
-        });
-    };
-    
-    // Search
-    
-    const search_input = document.querySelector('#search-input');
-    const search_button = document.querySelector('#search-button');
-    
-    const no_results = document.querySelector('#no-results');
-    const search_okay_button = document.querySelector('#no-results-button');
-    
-    search_button.addEventListener('click', nullSearchQuery);
-    search_okay_button.addEventListener('click', clearSearch);
-    
-    function toggleSearch() {
-        if (no_results.hidden = true) {
-            no_results.hidden = false;
-        }
-        else {
-            no_results.hidden = true
-        }
-    };
-    
-    function nullSearchQuery() {
-        no_results.hidden = false;
-        cards.style.display = 'none';
-        title.innerHTML = 'Search Results';
-        footerCheck_pushDown();
-    };
-    
-    function clearSearch() {
-        no_results.hidden = true;
-        cards.style.display = 'flex';
-        title.innerHTML = 'All Recipes';
-        search_input.value = '';
-        footerCheck_revert();
-    };
-    
-    // Filter
-    
-    const filter_menu = document.querySelector('.filter');
-    const filter_hitbox = document.querySelector('#filter-hitbox');
-    const filter_content = document.querySelector('#filter-content');
-    const filter_reset_button = document.querySelector('#filter-reset');
-    const filter_submit_button = document.querySelector('#filter-submit');
-    const filter_ranges = document.querySelectorAll('.range-1-slider');
-    
-    const filter_checkboxes = document.querySelectorAll('.filter-checkbox');
-    
-    filter_hitbox.addEventListener('click', toggleFilter);
-    filter_reset_button.addEventListener('click', clearFilter);
-    filter_submit_button.addEventListener('click', submitFilterQuery);
-    
-    function clearFilter() {
-        for (let i = 0; i < filter_checkboxes.length; i++) {
-            filter_checkboxes[i].checked = true;
-        }
-        filter_ranges[0].value=20;
-        filter_ranges[1].value=60;
-        submitFilterQuery();
-    };
-    
-    function submitFilterQuery() {
-        console.log('Queries not hooked up yet..');
-    }
-    
-    function toggleFilter() {
-        clearSearch();
-        if (filter_menu.hasAttribute('opened')) {
-            filter_menu.removeAttribute('opened');
-            filter_menu.setAttribute('closed', 'true');
-            filter_content.style.opacity = 0;
-            filter_menu.style.height = "3rem";
-            setTimeout(function(){
-                filter_content.style.display = "none";
-            },250);
-        }
-        else {
-            showFilter();
-        }
-    };
-    
-    function showFilter() {
-        filter_menu.removeAttribute('closed')
-        filter_menu.setAttribute('opened', 'true');
-        filter_menu.style.height = "756.78px";
-        filter_content.style.display = "block";
-        setTimeout(function(){
-            filter_content.style.opacity = 1;
-        },250);
-    };
     
     // Slideshow
     

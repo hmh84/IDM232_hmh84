@@ -132,15 +132,14 @@
 
 <!-- Modals -->
 
-
 <div id="modal-backdrop" style="display: none"></div>
 <div class="modal-close" style="display: none; top: 105%;"><span></span><span></span></div>
 <div id="modal-container" style="display: none">
     <div class="modal-content" id="modal-menu" style="display: none">
         <h1>Menu</h1>
-        <button class="button-style" id="menu-recipe-cms-button">Recipe CMS</button>
-        <button class="button-style" id="menu-user-cms-button">User CMS</button>
-        <button class="button-style" id="menu-continue-button">Continue to BlueBook</button>
+        <a href="admin/cms-recipes.php"><button class="button-style" id="menu-recipe-cms-button">Recipe CMS</button></a>
+        <a href="admin/cms-users.php"><button class="button-style" id="menu-user-cms-button">User CMS</button></a>
+        <button class="button-style" id="menu-continue-button">Close</button>
     </div>
     <div class="modal-content" id="modal-help" style="display: none">
         <div class="modal-hero">

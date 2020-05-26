@@ -56,14 +56,15 @@ main {
     align-items: center;
 }
 
-button:hover {
+#cms-wrapper button:hover {
     transform: translateX(1rem);
 }
 
 /* Form */
 
-#form-title {
+.area-title {
     text-align: center;
+    width: 100%;
 }
 
 #cms-form {
@@ -104,9 +105,9 @@ form input:last-of-type {
     margin-bottom: 0;
 }
 
-[small] {
+/* [small] {
     width: 49.3619365692138636%;
-}
+} */
 
 [tall] {
     height: 5rem;
@@ -116,9 +117,15 @@ label {
     padding-left: 1rem;
 }
 
-button[type="submit"]:hover {
+#cms-form button:hover {
     transform: scale(1.05);
 }
+
+/* #cms-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+} */
 
 /* Media Queries */
 

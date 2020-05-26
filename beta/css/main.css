@@ -171,7 +171,7 @@ input[type=search]:focus {
 }
 
 .button-style {
-    margin: 1rem auto;
+    margin: .5rem auto;
     padding: 1rem 2rem;
     clear: both;
     border: var(--primary-blue) solid .2rem;
@@ -356,6 +356,7 @@ div#cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    padding-bottom: 3rem;
 }
 
 .card {
