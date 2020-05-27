@@ -15,7 +15,7 @@
 <html lang="en" id="html">
 <head>
     <meta charset="UTF-8">
-    <title>IDM 232 - Beta</title>
+    <title>BlueBook - Browse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
@@ -175,7 +175,7 @@
         </div>
     </div>
 <?php
-    $recipe_selected = 4;
+    $recipe_selected = 12;
     $sql = "SELECT * FROM recipes WHERE id={$recipe_selected};";
     $result_s = mysqli_query($connection, $sql);
     $resultCheck = mysqli_num_rows($result_s);
@@ -197,47 +197,37 @@
             <p id="recipe-desc"><?php echo $row_s['description']; ?></p>
             <img id="recipe-ing-img" src="graphics/ingredients/<?php echo $row_s['ingredients_img']; ?>" alt="Ingredients Photo">
             <div id="recipe-ings">
-                <div id="recipe-ing-col-1">
-                    <p id="recipe-ing-1">- 11/2 lbs Pizza Dough</p>
-                    <p id="recipe-ing-3">- 3 cloves Garlic</p>
-                    <p id="recipe-ing-5">- 1 Romaine Lettuce Heart</p>
-                    <p id="recipe-ing-7">- 1 lb Broccoli</p>
-                    <p id="recipe-ing-9">- 1 cup Part-Skim Ricotta Cheese</p>
-                    <p id="recipe-ing-11">- 1 8-Ounce Can Tomato Sauce</p>
-                    <p id="recipe-ing-13"></p>
-                </div>
-                <div id="recipe-ing-col-2">
-                    <p id="recipe-ing-2">- 1/2 lb Fresh Mozzarella Cheese</p>
-                    <p id="recipe-ing-4">- 1/4 cup Grated Parmesan Cheese</p>
-                    <p id="recipe-ing-6">- 2 oz Black Cerignola Olives	</p>
-                    <p id="recipe-ing-8">- 1 Tbsp Italian Seasoning (Whole Dried Basil, Sage, Oregano, Savory, Rosemary, Thyme, & Marjoram)</p>
-                    <p id="recipe-ing-10">- 1 Lemon</p>
-                    <p id="recipe-ing-12"></p>
-                </div>
+
+                <?php
+                    $ingredString = $row_s['all_ingredients'];
+                    $ingredArray = explode('*', $ingredString);
+
+                    for ($loop = 0; $loop < count($ingredArray); $loop++) {
+                        $oneIngred = $ingredArray[$loop];
+                        echo "<p>".$oneIngred."</p>";
+                    }
+                ?>
             </div>
-            <img src="graphics/steps/step-1.jpg" alt="Step #1 Photo" id="recipe-step-img-1">
-            <h2 id="recipe-step-title-1">1 Prepare the ingredients:</h2>
-            <p id="recipe-step-desc-1">Remove the dough from the refrigerator to bring to room temperature. Place an oven rack in the center of the oven, then preheat to 475°F. Wash and dry the fresh produce. Cut off and discard the bottom 1/2 inch of the broccoli stem, then roughly chop the broccoli. Peel and roughly chop the garlic. Tear the mozzarella cheese into small pieces. Quarter and deseed the lemon.</p>
-            
-            <img src="graphics/steps/step-2.jpg" alt="Step #2 Photo" id="recipe-step-img-2">
-            <h2 id="recipe-step-title-2">2 Cook the broccoli & make the filling:</h2>
-            <p id="recipe-step-desc-2">In a large pan (nonstick, if you have one), heat 2 teaspoons of olive oil on medium-high until hot. Add the chopped broccoli; season with salt and pepper. Cook, stirring occasionally, 4 to 6 minutes, or until lightly browned. Add 2/3 of the chopped garlic. Cook, stirring constantly, 30 seconds to 1 minute, or until fragrant. Add 1/4 cup of water; season with salt and pepper. Cook, stirring occasionally, 2 to 3 minutes, or until the broccoli has softened and the water has cooked off. Transfer to a large bowl. Add the mozzarella cheese, ricotta cheese, half the Italian seasoning, and the juice of 1 lemon wedge; stir to combine. Season with salt and pepper. Wipe out the pan.</p>
-            
-            <img src="graphics/steps/step-3.jpg" alt="Step #3 Photo" id="recipe-step-img-3">
-            <h2 id="recipe-step-title-3">3 Assemble & bake the calzones:</h2>
-            <p id="recipe-step-desc-3">Lightly oil a sheet pan. Divide the dough into 2 equal-sized portions; using your hands and a rolling pin (or wine bottle), gently stretch and roll the portions into 1⁄4-inch-thick rounds. (If the dough is resistant, let rest for 5 minutes.) Divide the filling between the centers of the rounds; fold each round in half over the filling. Using a fork, crimp the edges of the dough to seal. Transfer to the sheet pan. Using a fork, poke a few holes across the tops of the calzones to vent. Lightly drizzle the calzones with olive oil. Bake 16 to 18 minutes, or until golden brown. Transfer to a cutting board and let stand for at least 2 minutes.</p>
-            
-            <img src="graphics/steps/step-4.jpg" alt="Step #4 Photo" id="recipe-step-img-4">
-            <h2 id="recipe-step-title-4">4 Prepare the remaining ingredients:</h2>
-            <p id="recipe-step-desc-4">While the calzones bake, using the flat side of your knife, smash the olives; remove and discard the pits, then roughly chop. Cut off and discard the root end of the lettuce; roughly chop the leaves. To make the dressing, in a large bowl, combine the mayonnaise, half the parmesan cheese, the juice of the remaining lemon wedges, and a drizzle of olive oil. Season with salt and pepper to taste.</p>
-            
-            <img src="graphics/steps/step-5.jpg" alt="Step #5 Photo" id="recipe-step-img-5">
-            <h2 id="recipe-step-title-5">5</h2>
-            <p id="recipe-step-desc-5">While the calzones continue to bake, in the pan used to cook the broccoli, heat 2 teaspoons of olive oil on medium-high until hot. Add the remaining chopped garlic; cook, stirring constantly, 30 seconds to 1 minute, or until fragrant. Add the tomato sauce and remaining Italian seasoning. Cook, stirring frequently, 2 to 3 minutes, or until slightly thickened. Turn off the heat and season with salt and pepper to taste.</p>
-            
-            <img src="graphics/steps/step-6.jpg" alt="Step #6 Photo" id="recipe-step-img-6">
-            <h2 id="recipe-step-title-6">6 Make the salad & serve your dish:</h2>
-            <p id="recipe-step-desc-6">Just before serving, add the chopped olives and lettuce to the bowl of dressing. Toss to coat; season with salt and pepper to taste. Cut the baked calzones in half. Serve with the sauce and salad on the side. Garnish with the remaining parmesan cheese.</p>
+
+            <?php
+                    $stepImgString = $row_s['step_imgs'];
+                    $stepImgArray = explode('*', $stepImgString);
+
+                    $stepString = $row_s['all_steps'];
+                    $stepArray = explode('*', $stepString);
+
+                    $stepDescString = $row_s['all_steps'];
+                    $stepDescArray = explode('*', $stepDescString);
+
+                    for ($loop = 0; $loop < count($stepImgArray); $loop++) {
+                        $oneStepImg = $stepImgArray[$loop];
+                        $oneStepTitle = $stepArray[$loop*2];
+                        $oneStepDesc = $stepArray[$loop*2+1];
+                        echo "<img src='graphics/steps/{$oneStepImg}' alt='Step {$loop} Photo'></img>";
+                        echo "<h2>{$oneStepTitle}</h2>";
+                        echo "<p>{$oneStepDesc}</p>";
+                    }
+                ?>
             <h1>Enjoy!</h1>
         </div>
     </div>

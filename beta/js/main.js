@@ -56,7 +56,8 @@ $( document ).ready(function() {
         },250);
     };
     
-    function showModal() {
+    function showModal(i) {
+        console.log(i);
         modal_backdrop.style.display = "flex";
         modal_container.style.display = "flex";
         modal_close_button.style.display = "flex";
@@ -93,7 +94,7 @@ $( document ).ready(function() {
             modal_help.style.display = "none";
             modal_recipe.style.display = "flex";
             
-            showModal();
+            showModal(i);
             
         });
     };

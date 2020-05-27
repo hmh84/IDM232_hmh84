@@ -13,7 +13,7 @@
 <html lang="en" id="html">
 <head>
     <meta charset="UTF-8">
-    <title>IDM 232 - Beta</title>
+    <title>BlueBook - Recipe CMS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/main.css">
