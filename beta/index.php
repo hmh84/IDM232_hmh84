@@ -4,8 +4,6 @@
     $query ="SELECT * FROM recipes;";
     $result = mysqli_query($connection, $query);
 
-    $result_selected = mysqli_query($connection, $query_selected_recipe);
-    
     if (!$result ) {
         die ('Database query failed :(');
     }
@@ -20,6 +18,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -100,7 +99,7 @@
     while($row = mysqli_fetch_assoc($result)) {
 ?>
 
-            <div class="card">
+            <a href="recipe.php?id=<?php echo $row['id'] ?>"><div class="card">
                 <div class="card-photo-area">
                     <img src="graphics/cards/<?php echo $row['main_img']; ?>" alt="Recipe #<?php echo $row['id']; ?> Photo">
                 </div>
@@ -123,7 +122,7 @@
                         </div>
                     </div>
                     </div>
-            </div>
+            </div></a>
 <?php
     }
 ?>
@@ -175,8 +174,8 @@
         </div>
     </div>
 <?php
-    $recipe_selected = 12;
-    $sql = "SELECT * FROM recipes WHERE id={$recipe_selected};";
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM recipes WHERE id={$id};";
     $result_s = mysqli_query($connection, $sql);
     $resultCheck = mysqli_num_rows($result_s);
     if ($resultCheck > 0) {

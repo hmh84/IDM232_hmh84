@@ -56,8 +56,7 @@ $( document ).ready(function() {
         },250);
     };
     
-    function showModal(i) {
-        console.log(i);
+    function showModal() {
         modal_backdrop.style.display = "flex";
         modal_container.style.display = "flex";
         modal_close_button.style.display = "flex";
@@ -68,7 +67,7 @@ $( document ).ready(function() {
             modal_container.style.top = "0";
             modalCloseButtonCheck();
         },250);
-    }
+    };
     
     function hideModal() {
         modal_backdrop.style.opacity = "0";
@@ -80,7 +79,7 @@ $( document ).ready(function() {
             modal_close_button.style.display = "none";
             document.querySelector('#html').style.overflowY = "auto";
             },250);
-    }
+    };
     
     menu_continue_button.addEventListener('click', closeAllModals);
     modal_close_button.addEventListener('click', closeAllModals);
@@ -88,15 +87,17 @@ $( document ).ready(function() {
     // Need to get rid of behind modal clicking
     
     for (let i = 0; i < card.length; i++) {
-        
         card[i].addEventListener('click', () => {
-            modal_menu.style.display = "none";
-            modal_help.style.display = "none";
-            modal_recipe.style.display = "flex";
-            
-            showModal(i);
-            
+            cardSelect();
         });
+    };
+
+    function cardSelect() {
+        modal_menu.style.display = "none";
+        modal_help.style.display = "none";
+        modal_recipe.style.display = "flex";
+            
+        showModal();
     };
     
     // Search
@@ -277,6 +278,10 @@ $( document ).ready(function() {
             }
         }
     }
+
+    // AJAX
+
+    
     
     // End of JS
     
