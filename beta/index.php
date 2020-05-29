@@ -1,14 +1,3 @@
-<?php
-    include_once 'include/db.php';
-    
-    $query ="SELECT * FROM recipes;";
-    $result = mysqli_query($connection, $query);
-
-    if (!$result ) {
-        die ('Database query failed :(');
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en" id="html">
 <head>
@@ -17,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+    </script>
 </head>
 <body>
 
@@ -95,39 +87,51 @@
 <!-- Main - Cards -->
 <div id="cards">
 
-<?php
-    while($row = mysqli_fetch_assoc($result)) {
-?>
+    <?php
+        include_once 'include/db.php';
 
-            <a href="recipe.php?id=<?php echo $row['id'] ?>"><div class="card">
-                <div class="card-photo-area">
-                    <img src="graphics/cards/<?php echo $row['main_img']; ?>" alt="Recipe #<?php echo $row['id']; ?> Photo">
-                </div>
-                <div class="card-content">
-                    <div class="card-area-name">
-                        <h2 class="card-title"><?php echo $row['title']; ?></h2>
-                        <p  class="card-subtitle"><?php echo $row['subtitle']; ?></p>
-                    </div>
-                        <p  class="card-desc"><?php echo $row['description']; ?></p>
-                    <div class="card-area-stats">
-                        <div class="card-span">
-                            <p  class="card-mins-prefix">Cook Time</p>
-                            <div class="card-span-line1"></div>
-                            <p  class="card-mins"><?php echo $row['cook_time']."mins"; ?></p>
-                        </div>
-                        <div class="card-span">
-                            <p  class="card-cals-prefix">Calories/Serving</p>
-                            <div class="card-span-line2"></div>
-                            <p  class="card-cals"><?php echo $row['cal_per_serving']; ?></p>
-                        </div>
-                    </div>
-                    </div>
-            </div></a>
-<?php
-    }
-?>
+        $sql = "SELECT * FROM recipes";
+        $result = mysqli_query($connection, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+
+                echo "<a href='recipe.php?id={$row['id']}'><div class='card'>";
+                    echo "<div class='card-photo-area'>";
+                        echo "<img src='graphics/cards/{$row['main_img']}' alt='recipe #{$row['id']} Photo'>";
+                    echo "</div>";
+                    echo "<div class='card-content'>";
+                        echo "<div class='card-area-name>";
+                            echo "<h2 class='card-title'>{$row['title']}</h2>";
+                            echo "<p class='card-subtitle'>{$row['subtitle']}</p>";
+                        echo "</div>";
+                        echo "<p class='card-desc'>{$row['description']}</p>";
+                        echo "<div class='card-area-stats'>";
+                            echo "<div class='card-span'>";
+                                echo "<p class='card-mins-prefix'>Cook Time</p>";
+                                echo "<div class='card-span-line1'></div>";
+                                    echo "<p class='card-mins'>{$row['cook_time']} mins</p>";
+                                echo "</div>";
+                            echo "<div class='card-span'>";
+                                echo "<p class='card-cals-prefix'>Calories/Serving</p>";
+                                echo "<div class='card-span-line2'></div>";
+                                echo "<p class='card-cals'>{$row['cal_per_serving']}</p>";
+                            echo "</div>";
+                        echo "</div>";
+                    echo "</div>";
+                echo "</div></a>";
+            }
+        } else {
+            echo "There are no recipes!";
+        }
+    ?>
+
+</div>
+
+    <div id="load-more-div">
+        <button class="button-style" id="load-more">View More</button>
     </div>
-    </main>
+</main>
 
 <!-- Modals -->
 
@@ -146,94 +150,144 @@
         </div>
         <div class="modal-content-main">
             <h1>Help</h1>
-                <h2>About BlueBook</h2>
                     <h3>How it Works</h3>
-                        <p>Why are you named Blue Book?</p>
-                        <p>How do Blue Book meals work?</p>
-                        <p>What delivery days are there in my area?</p>
-                        <p>Where do you deliver?</p>
-                        <p>Is there a minimum duration required for the Blue Book meals subscription?</p>
-                        <p>Are there membership fees?</p>
-                        <p>See all 7 articles</p>
+                        <div class="help-expand">
+                            <div class="help-expand-head">
+                                <p>Why are you named Blue Book?</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 492"><defs/><path d="M484 125l-16-16a27 27 0 00-38 0L246 293 62 109c-5-6-12-8-19-8s-14 2-19 8L8 125a27 27 0 000 38l219 220c5 5 12 8 19 8s14-3 19-8l219-220a27 27 0 000-38z"/></svg>
+                            </div>
+                            <div class="help-expand-box" style="display: none; opacity: 0; max-height: 0px;" closed>
+                                <p>The name Blue Book is an homage to chefs around the world who wear Blue Books while learning to cook. Today, the Blue Book is a symbol of lifelong learning within the culinary field, so our hope is that our name inspires others to discover new elements of preparing and cooking food!</p>
+                            </div>    
+                        </div>
+                        <div class="help-expand">
+                            <div class="help-expand-head">
+                                <p>How do Blue Book meals work?</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 492"><defs/><path d="M484 125l-16-16a27 27 0 00-38 0L246 293 62 109c-5-6-12-8-19-8s-14 2-19 8L8 125a27 27 0 000 38l219 220c5 5 12 8 19 8s14-3 19-8l219-220a27 27 0 000-38z"/></svg>
+                            </div>
+                            <div class="help-expand-box" style="display: none; opacity: 0; max-height: 0px;" closed>
+                                <p>Blue Book is a fresh ingredient and recipe delivery service that helps chefs of all levels cook incredible meals at home. We take care of the menu planning and shopping (providing you with fresh, locally sourced ingredients in pre-measured quantities), so all you have to do is cook and enjoy (please note: our blog is full of helpful tips that will help you cook with speed and ease).</p>
+                                <p>We offer the following plans designed to suit your specific culinary needs. Plus, you can choose to skip your orders up to 5 weeks in advance or cancel at any time.</p>
+                            </div>    
+                        </div>
+                        <div class="help-expand">
+                            <div class="help-expand-head">
+                                <p>What delivery days are there in my area?</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 492"><defs/><path d="M484 125l-16-16a27 27 0 00-38 0L246 293 62 109c-5-6-12-8-19-8s-14 2-19 8L8 125a27 27 0 000 38l219 220c5 5 12 8 19 8s14-3 19-8l219-220a27 27 0 000-38z"/></svg>
+                            </div>
+                                <div class="help-expand-box" style="display: none; opacity: 0; max-height: 0px;" closed>
+                                <p>When you sign up to receive Blue Book and enter your zip code, you’ll have the option to select a your First Delivery Date from a list of available options in your area. You'll continue to receive deliveries on the day of the week that you choose, unless you decide to change it later in your Account Settings.</p>
+                            </div>    
+                        </div>
+                        <div class="help-expand">
+                            <div class="help-expand-head">
+                                <p>Where do you deliver?</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 492"><defs/><path d="M484 125l-16-16a27 27 0 00-38 0L246 293 62 109c-5-6-12-8-19-8s-14 2-19 8L8 125a27 27 0 000 38l219 220c5 5 12 8 19 8s14-3 19-8l219-220a27 27 0 000-38z"/></svg>
+                            </div>
+                                <div class="help-expand-box" style="display: none; opacity: 0; max-height: 0px;" closed>
+                                <p>We deliver Blue Book meals to the contiguous United States. Click here to see what delivery options are available in your area. Visit this article to see where we can deliver Blue Book wines.</p>
+                            </div>    
+                        </div>
+                        <div class="help-expand">
+                            <div class="help-expand-head">
+                                <p>Is there a minimum duration required for the Blue Book meals subscription?</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 492"><defs/><path d="M484 125l-16-16a27 27 0 00-38 0L246 293 62 109c-5-6-12-8-19-8s-14 2-19 8L8 125a27 27 0 000 38l219 220c5 5 12 8 19 8s14-3 19-8l219-220a27 27 0 000-38z"/></svg>
+                            </div>
+                                <div class="help-expand-box" style="display: none; opacity: 0; max-height: 0px;" closed>
+                                <p>There’s no minimum commitment required for our subscriptions. All orders can be skipped or cancelled by the cutoff date and time, reflected on your Upcoming page and your Account Settings. A friendly reminder that any orders identified as ‘Order Processed’ or ‘Shipped’ in your Upcoming page have already processed, and can't be changed or cancelled.</p>
+                            </div>    
+                        </div>
+                        <div class="help-expand">
+                            <div class="help-expand-head">
+                                <p>Are there membership fees?</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 492"><defs/><path d="M484 125l-16-16a27 27 0 00-38 0L246 293 62 109c-5-6-12-8-19-8s-14 2-19 8L8 125a27 27 0 000 38l219 220c5 5 12 8 19 8s14-3 19-8l219-220a27 27 0 000-38z"/></svg>
+                            </div>
+                                <div class="help-expand-box" style="display: none; opacity: 0; max-height: 0px;" closed>
+                                <p>There are no membership fees associated with our meal or wine plans.</p>
+                            </div>    
+                        </div>
                     <h3>Plans</h3>
-                        <p>What is Meal Prep by Blue Book?</p>
-                        <p>Is it available in my area?</p>
-                        <p>What meal plans do you offer?</p>
-                        <p>Do you have specific dietary plans?</p>
+                    <div class="help-expand">
+                        <div class="help-expand-head">
+                            <p>What is Meal Prep by Blue Book? Is it available in my area?</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 492"><defs/><path d="M484 125l-16-16a27 27 0 00-38 0L246 293 62 109c-5-6-12-8-19-8s-14 2-19 8L8 125a27 27 0 000 38l219 220c5 5 12 8 19 8s14-3 19-8l219-220a27 27 0 000-38z"/></svg>
+                        </div>
+                                <div class="help-expand-box" style="display: none; opacity: 0; max-height: 0px;" closed>
+                                <p>With our Meal Prep plan, you’ll receive all the pre-portioned, high-quality ingredients you need to prepare 8 servings of delicious, chef-designed dishes. The Meal Prep kits come with one set of cooking instructions to help you prepare the ingredients for all 8 servings in under 2 hours, so you have ready-to-go meals prepared ahead of time to enjoy!</p>
+                        </div>    
+                    </div>
+                        <div class="help-expand">
+                            <div class="help-expand-head">
+                                <p>Do you have specific dietary plans?</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 492"><defs/><path d="M484 125l-16-16a27 27 0 00-38 0L246 293 62 109c-5-6-12-8-19-8s-14 2-19 8L8 125a27 27 0 000 38l219 220c5 5 12 8 19 8s14-3 19-8l219-220a27 27 0 000-38z"/></svg>
+                            </div>
+                                <div class="help-expand-box" style="display: none; opacity: 0; max-height: 0px;" closed>
+                                <p>At this time, we don't offer specific dietary plans, with the exception of our Signature for 2 Vegetarian Plan. However, our Culinary team designs many of our recipes so they can be adjusted by making simple at-home substitutions.</p>
+                                <p>Many of our chefs check their weekly menus in advance and customize their menus each week by visiting their Upcoming page. If you can’t find an exact menu that works for you, you can make an appropriate at-home ingredient substitution or choose to skip that week’s delivery.</p>
+                            </div>    
+                        </div>
                     <h3>Recipes</h3>
-                        <p>What are Premium Recipes?</p>
-                        <p>What comes in each delivery?</p>
-                        <p>Can Blue Book accommodate food allergies?</p>
-                        <p>Do you provide nutritional and caloric information?</p>
-                        <p>Do you offer vegetarian recipes?</p>
-                        <p>How does Blue Book define a vegetarian recipe?</p>
-                    <a href="">
-                        <strong>See all 10 articles</strong>
-                    </a>
-            <p>If you haven’t found your answer, you can reach us <a href=""><strong>here.</strong></a></p>
+                    <div class="help-expand">
+                        <div class="help-expand-head">
+                            <p>What are Premium Recipes?</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 492"><defs/><path d="M484 125l-16-16a27 27 0 00-38 0L246 293 62 109c-5-6-12-8-19-8s-14 2-19 8L8 125a27 27 0 000 38l219 220c5 5 12 8 19 8s14-3 19-8l219-220a27 27 0 000-38z"/></svg>
+                        </div>
+                                <div class="help-expand-box" style="display: none; opacity: 0; max-height: 0px;" closed>
+                                <p>Blue Book Premium Recipes are recipes that introduce home cooks to specialty protein combinations, advanced culinary techniques, and unique flavor twists. These recipes deliver the experience customers know and love from Blue Book, with an added emphasis on teaching home cooks how to create more elaborate meals.</p>
+                        </div>    
+                    </div>    
+                        <div class="help-expand">
+                            <div class="help-expand-head">
+                                <p>What comes in each delivery?</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 492"><defs/><path d="M484 125l-16-16a27 27 0 00-38 0L246 293 62 109c-5-6-12-8-19-8s-14 2-19 8L8 125a27 27 0 000 38l219 220c5 5 12 8 19 8s14-3 19-8l219-220a27 27 0 000-38z"/></svg>
+                            </div>
+                                <div class="help-expand-box" style="display: none; opacity: 0; max-height: 0px;" closed>
+                                <p>Blue Book meals deliveries contain all the seasonal produce and specialty ingredients you need to create unique, flavorful meals for the week. In each box, we’ll send detailed recipe cards with step-by-step instructions to make dinner easy and delicious. Just bring salt, pepper, olive oil and an appetite!</p>
+                                <p>Additionally, our team works hard to carefully package each ingredient, ensuring that your delivery arrives ready to enjoy.</p>
+                            </div>    
+                        </div>
+                        <div class="help-expand">
+                            <div class="help-expand-head">
+                                <p>Can Blue Book accommodate food allergies?</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 492"><defs/><path d="M484 125l-16-16a27 27 0 00-38 0L246 293 62 109c-5-6-12-8-19-8s-14 2-19 8L8 125a27 27 0 000 38l219 220c5 5 12 8 19 8s14-3 19-8l219-220a27 27 0 000-38z"/></svg>
+                            </div>
+                                <div class="help-expand-box" style="display: none; opacity: 0; max-height: 0px;" closed>
+                                <p>All of our ingredients are packaged in a facility that also processes milk, eggs, fish, shellfish, tree nuts, peanuts, wheat and soy. Because of this, we don’t recommend ordering Blue Book if you have a severe food allergy.</p>
+                                <p>We also provide allergen information on our nutrition labels for each recipe, which are available online up to 1.5 weeks in advance. We also recommend checking the ingredient labels in your box for the most up-to-date allergen information, as we occasionally need to replace an item with an alternative to ensure high quality.</p>
+                            </div>    
+                        </div>
+                        <div class="help-expand">
+                            <div class="help-expand-head">
+                                <p>Do you provide nutritional and caloric information?</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 492"><defs/><path d="M484 125l-16-16a27 27 0 00-38 0L246 293 62 109c-5-6-12-8-19-8s-14 2-19 8L8 125a27 27 0 000 38l219 220c5 5 12 8 19 8s14-3 19-8l219-220a27 27 0 000-38z"/></svg>
+                            </div>
+                                <div class="help-expand-box" style="display: none; opacity: 0; max-height: 0px;" closed>
+                                <p>We always want to help our chefs make informed decisions when cooking with us, so we provide nutritional information for each recipe up to 1.5 weeks in advance. These labels include the recipe’s ingredient list, nutrient breakdown, daily values and allergen information.</p>
+                                <p>Because every chef’s style of cooking differs, the caloric values of prepared meals may vary slightly depending on any added ingredients (such as olive oil) used in the process.</p>
+                            </div>    
+                        </div>
+                        <div class="help-expand">
+                            <div class="help-expand-head">
+                                <p>Do you offer vegetarian recipes?</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 492"><defs/><path d="M484 125l-16-16a27 27 0 00-38 0L246 293 62 109c-5-6-12-8-19-8s-14 2-19 8L8 125a27 27 0 000 38l219 220c5 5 12 8 19 8s14-3 19-8l219-220a27 27 0 000-38z"/></svg>
+                            </div>
+                                <div class="help-expand-box" style="display: none; opacity: 0; max-height: 0px;" closed>
+                                <p>If you currently have a Blue Book account, you can head over to the ‘Dietary Selections’ section of your Account Settings and check the ‘We’re Vegetarian’ box. We’ll automatically default you to vegetarian recipes each week, but you’ll still be able to customize your menu. Please note, we’re unable to accommodate individual food allergies.</p>
+                                <p>At this time, a fully vegetarian box is only only available on our Signature for 2 plan.</p>
+                            </div>    
+                        </div>
+                        <div class="help-expand">
+                            <div class="help-expand-head">
+                                <p>How does Blue Book define a vegetarian recipe?</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492 492"><defs/><path d="M484 125l-16-16a27 27 0 00-38 0L246 293 62 109c-5-6-12-8-19-8s-14 2-19 8L8 125a27 27 0 000 38l219 220c5 5 12 8 19 8s14-3 19-8l219-220a27 27 0 000-38z"/></svg>
+                            </div>
+                                <div class="help-expand-box" style="display: none; opacity: 0; max-height: 0px;" closed>
+                                <p>We always want our chefs to have a variety of choices each week regardless of dietary preferences, so we provide three vegetarian recipe options on our weekly Signature Plan for 2 menu. Blue Book vegetarian recipes are made with fruits and vegetables, grains, legumes, nuts and seeds and are created with or without dairy products,* honey and/or eggs for you to enjoy as part of your vegetarian preference.</p>
+                            </div>    
+                        </div>
+                        <p id="last-p">If you haven’t found your answer, you can reach us <a href="https://support.blueapron.com/hc/en-us/requests/new"><strong>here.</strong></a></p>
         </div>
     </div>
-<?php
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM recipes WHERE id={$id};";
-    $result_s = mysqli_query($connection, $sql);
-    $resultCheck = mysqli_num_rows($result_s);
-    if ($resultCheck > 0) {
-        if ($row_s = mysqli_fetch_assoc($result_s)) {
-?>
-    <div class="modal-content" id="modal-recipe" style="display: none">
-        <div class="modal-hero">
-                <img id="recipe-hero" src="graphics/modal-heros/<?php echo $row_s['main_img']; ?>" alt="Recipe Photo">
-            </div>
-            <div class="modal-content-main">
-                <h1 id="recipe-title"><?php echo $row_s['title']; ?></h1>
-                <h2 id="recipe-subtitle"><?php echo $row_s['subtitle']; ?></h2>
-                <div id="recipe-stats">
-                <p id="recipe-cook-time">Cook Time: <?php echo $row_s['cook_time']; ?>min</p>
-                <p id="recipe-serving-count">Servings: <?php echo $row_s['servings']; ?></p>
-                <p id="recipe-cals-per-serving">Calories/Serving: <?php echo $row_s['cal_per_serving']; ?></p>
-            </div>
-            <p id="recipe-desc"><?php echo $row_s['description']; ?></p>
-            <img id="recipe-ing-img" src="graphics/ingredients/<?php echo $row_s['ingredients_img']; ?>" alt="Ingredients Photo">
-            <div id="recipe-ings">
-
-                <?php
-                    $ingredString = $row_s['all_ingredients'];
-                    $ingredArray = explode('*', $ingredString);
-
-                    for ($loop = 0; $loop < count($ingredArray); $loop++) {
-                        $oneIngred = $ingredArray[$loop];
-                        echo "<p>".$oneIngred."</p>";
-                    }
-                ?>
-            </div>
-
-            <?php
-                    $stepImgString = $row_s['step_imgs'];
-                    $stepImgArray = explode('*', $stepImgString);
-
-                    $stepString = $row_s['all_steps'];
-                    $stepArray = explode('*', $stepString);
-
-                    $stepDescString = $row_s['all_steps'];
-                    $stepDescArray = explode('*', $stepDescString);
-
-                    for ($loop = 0; $loop < count($stepImgArray); $loop++) {
-                        $oneStepImg = $stepImgArray[$loop];
-                        $oneStepTitle = $stepArray[$loop*2];
-                        $oneStepDesc = $stepArray[$loop*2+1];
-                        echo "<img src='graphics/steps/{$oneStepImg}' alt='Step {$loop} Photo'></img>";
-                        echo "<h2>{$oneStepTitle}</h2>";
-                        echo "<p>{$oneStepDesc}</p>";
-                    }
-                ?>
-            <h1>Enjoy!</h1>
-        </div>
-    </div>
-<?php
-        }
-    }
-?>
 </div>
 
 <!-- Footer -->

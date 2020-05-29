@@ -37,7 +37,7 @@ html, body, main, header, footer {
     overflow-x: hidden;
 }
 
-main h1, #hero-content h1:last-of-type, #modal-help p:last-of-type, #modal-recipe h1:last-of-type, div#modal-menu {
+main h1, #hero-content h1:last-of-type, #last-p, #modal-recipe h1:last-of-type, div#modal-menu {
     text-align: center;
 }
 
@@ -125,6 +125,7 @@ body {
 
 main {
     padding-top: var(--hero-height);
+    padding: var(--hero-height) 0 6rem 0;
     margin: auto;
     max-width: 75rem;
 }
@@ -270,6 +271,7 @@ input[type=search]:focus {
     margin: .75rem 0;
 }
 
+
 .modal-content-main {
     padding: 2rem;
     display: flex;
@@ -350,13 +352,54 @@ div#modal-menu {
     max-width: 22rem;
 }
 
+/* Help */
+
+#modal-help h1:first-of-type {
+    text-align: center;
+}
+
+.help-expand {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+}
+
+.help-expand:hover {
+    cursor: pointer;
+}
+
+.help-expand:hover svg {
+    opacity: 1;
+}
+
+.help-expand-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: min-content;
+    margin: 0;
+}
+
+.help-expand-head svg {
+    width: 1.2rem;
+    margin: 0 0 0 .75rem;
+    opacity: .25;
+}
+
+.help-expand-box {
+    border-left: rgba(0, 0, 0, 0.3) solid 2px;
+    padding-left: 2rem;
+    text-align: left;
+}
+
 /* Cards */
 
 div#cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding-bottom: 3rem;
 }
 
 .card {
@@ -438,6 +481,14 @@ div#cards {
 
 .card-mins, .card-cals {
     text-align: right;
+}
+
+div#load-more-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
 }
 
 /* Footer */
@@ -707,7 +758,7 @@ input[type=range]::-webkit-slider-thumb {
 
 /* Hovers */
 
-.card, footer a, footer a p, #header-help-link, #header-menu-link, .button-style, .modal-close, .control_indicator{
+.card, footer a, footer a p, #header-help-link, #header-menu-link, .button-style, .modal-close, .control_indicator, .help-expand-head svg, .help-expand-box, .help-expand-head {
     transition: all .25s ease-in-out;
     -webkit-transition: all .25s ease-in-out;
 }

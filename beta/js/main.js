@@ -46,7 +46,7 @@ $( document ).ready(function() {
     const modal_help = document.querySelector('#modal-help');
     
     function closeAllModals() {
-        modal_recipe.style.display = "none";
+        // modal_recipe.style.display = "none";
         modal_help.style.display = "none";
         modal_menu.style.top = "-20vh"
         hideModal();
@@ -86,19 +86,19 @@ $( document ).ready(function() {
     // modal_recipe.addEventListener('click', closeAllModals);
     // Need to get rid of behind modal clicking
     
-    for (let i = 0; i < card.length; i++) {
-        card[i].addEventListener('click', () => {
-            cardSelect();
-        });
-    };
+    // for (let i = 0; i < card.length; i++) {
+    //     card[i].addEventListener('click', () => {
+    //         cardSelect();
+    //     });
+    // };
 
-    function cardSelect() {
-        modal_menu.style.display = "none";
-        modal_help.style.display = "none";
-        modal_recipe.style.display = "flex";
+    // function cardSelect() {
+    //     modal_menu.style.display = "none";
+    //     modal_help.style.display = "none";
+    //     modal_recipe.style.display = "flex";
             
-        showModal();
-    };
+    //     showModal();
+    // };
     
     // Search
     
@@ -225,11 +225,57 @@ $( document ).ready(function() {
     }
     
     function footerCheck_revert() {
-            footer.style.position = '';
-            footer.style.bottom = '';
-            footer.style.left = '';
+        footer.style.position = '';
+        footer.style.bottom = '';
+        footer.style.left = '';
+    }
+
+    // Help Menu
+
+    const help_expand_head = document.querySelectorAll('.help-expand-head');
+    const help_expand_box = document.querySelectorAll('.help-expand-box');
+
+    for (let i = 0; i < help_expand_head.length; i++) {
+        help_expand_head[i].addEventListener('click', toggleHelpLink);
+    }
+
+    function toggleHelpLink() {
+        var box = this.nextElementSibling;
+        var arrow = this.childNodes[3];
+        
+        if (box.hasAttribute('closed')) {
+            console.log('opening');
+            openHelpLink(box, arrow);
+        } else {
+            console.log('closing');
+            closeHelpLink(box, arrow);
+        }
     }
     
+    function openHelpLink(box, arrow) {
+        arrow.style.transform = "rotate(-180deg)";
+        box.removeAttribute('closed');
+        box.setAttribute('open', 'true');
+        
+        box.style.display = "block";
+        box.style.maxHeight = "232px";
+        setTimeout(function(){
+            box.style.opacity = 1;
+        },250);
+    }
+    
+    function closeHelpLink(box, arrow) {
+        arrow.style.transform = "rotate(0deg)";
+        box.removeAttribute('open');
+        box.setAttribute('closed', 'true');
+
+        box.style.opacity = 0;
+        box.style.maxHeight = "0px";
+            setTimeout(function(){
+                box.style.display = "none";
+            },250);
+    }
+
     // KeyUp Events
     
     document.onkeyup = function(evt) {
