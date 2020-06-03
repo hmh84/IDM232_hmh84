@@ -83,6 +83,7 @@ $( document ).ready(function() {
     
     menu_continue_button.addEventListener('click', closeAllModals);
     modal_close_button.addEventListener('click', closeAllModals);
+    
     // modal_recipe.addEventListener('click', closeAllModals);
     // Need to get rid of behind modal clicking
     
@@ -108,7 +109,7 @@ $( document ).ready(function() {
     const no_results = document.querySelector('#no-results');
     const search_okay_button = document.querySelector('#no-results-button');
     
-    search_button.addEventListener('click', nullSearchQuery);
+    // search_button.addEventListener('click', nullSearchQuery);
     search_okay_button.addEventListener('click', clearSearch);
     
     function toggleSearch() {
@@ -140,28 +141,11 @@ $( document ).ready(function() {
     const filter_menu = document.querySelector('.filter');
     const filter_hitbox = document.querySelector('#filter-hitbox');
     const filter_content = document.querySelector('#filter-content');
-    const filter_reset_button = document.querySelector('#filter-reset');
-    const filter_submit_button = document.querySelector('#filter-submit');
     const filter_ranges = document.querySelectorAll('.range-1-slider');
     
     const filter_checkboxes = document.querySelectorAll('.filter-checkbox');
     
     filter_hitbox.addEventListener('click', toggleFilter);
-    filter_reset_button.addEventListener('click', clearFilter);
-    filter_submit_button.addEventListener('click', submitFilterQuery);
-    
-    function clearFilter() {
-        for (let i = 0; i < filter_checkboxes.length; i++) {
-            filter_checkboxes[i].checked = true;
-        }
-        filter_ranges[0].value=20;
-        filter_ranges[1].value=60;
-        submitFilterQuery();
-    };
-    
-    function submitFilterQuery() {
-        console.log('Queries not hooked up yet..');
-    }
     
     function toggleFilter() {
         clearSearch();

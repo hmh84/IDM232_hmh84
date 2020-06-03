@@ -1,10 +1,11 @@
 <?php
+    $directory_level = '../';
     include_once '../include/db.php';
     
     $query ="SELECT * FROM users ORDER BY role;";
     $result = mysqli_query($connection, $query);
 
-    if (!$result ) {
+    if (!$result) {
         die ('Database query failed :(');
     }
 ?>
@@ -24,23 +25,7 @@
 
 <!-- Header -->
 
-    <header>
-        <div id="hero">
-            <div id="hero-filter"></div>
-            <div id="slideshow">
-                <img src="../graphics/slideshow/hero-1.jpg" alt="Hero Photo">
-                <img src="../graphics/slideshow/hero-2.jpg" alt="Hero Photo">
-                <img src="../graphics/slideshow/hero-3.jpg" alt="Hero Photo">
-            </div>
-            <div id="hero-content">
-                <h1 class="logo-text">BlueBook</h1>
-                <!-- <p id="header-help-link">Help</p> -->
-                <p id="header-menu-link">Menu</p>
-                <h2 class="logo-text">Let's get cooking.</h2>
-                <h1>BlueBook is a company dedicated to bringing you high quality meals made in simple ways.</h1>
-            </div>
-        </div>
-    </header>
+<?php include_once '../include/header.php'; ?>
 
 <!-- Main - Search & Filter -->
 
@@ -53,7 +38,7 @@
                 if ($result > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                 ?>
-                        <button>
+                        <a href="cms-user-edit.php?id=<?php echo $row['id'] ?>"><button>
                             <div class="cms-card-img">
                                 <img src="../graphics/users/user.png" alt="Profile Pic">
                             </div>
@@ -65,7 +50,7 @@
                                 ."<br>"
                                 ."Role: ".$row['role']; ?>
                             </div>
-                        </button>
+                        </button></a>
                         <br>
                 <?php
                         }
@@ -101,12 +86,7 @@
     </div>
 </div>
 
-    <footer>
-        <p>BlueBook 2020</p>
-        <a target="_blank" href="https://www.hunterhdesign.com">
-            <p>Created by: Hunter H Design</p>
-        </a>
-    </footer>
+    <?php include_once '../include/footer.php'; ?>
     <script src="../js/cms.js" type="text/javascript"></script>
 </body>
 </html>

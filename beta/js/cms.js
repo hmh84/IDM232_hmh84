@@ -49,9 +49,11 @@ $( document ).ready(function() {
     
     function closeAllModals() {
         modal_menu.style.top = "-20vh"
+        modal_delete_confirm.style.top = "-20vh"
         hideModal();
         setTimeout(function(){
             modal_menu.style.display = "none";
+            modal_delete_confirm.style.display = "none";
             modalCloseButtonCheck();
         },250);
     };
@@ -80,6 +82,27 @@ $( document ).ready(function() {
             document.querySelector('#html').style.overflowY = "auto";
             },250);
     }
+
+    // Delete Confirmation
+
+    const form_delete_button = document.querySelector('#form-delete-button');
+    const form_delete_button_cancel = document.querySelector('#form-delete-cancel');
+    const modal_delete_confirm = document.querySelector('#modal-delete-confirm');
+
+    if (form_delete_button) {
+        form_delete_button.addEventListener('click', () => {
+            showModal();
+            modal_delete_confirm.style.display = "flex";
+            modal_close_button.style.display = "none";
+            setTimeout(function(){
+                modal_delete_confirm.style.top = "50vh"
+            },250);
+        });
+        form_delete_button_cancel.addEventListener('click', () => {
+            closeAllModals();
+        });
+    }
+
     
     menu_continue_button.addEventListener('click', closeAllModals);
     modal_close_button.addEventListener('click', closeAllModals);
@@ -122,9 +145,9 @@ $( document ).ready(function() {
     }
     
     function footerCheck_revert() {
-            footer.style.position = '';
-            footer.style.bottom = '';
-            footer.style.left = '';
+        footer.style.position = '';
+        footer.style.bottom = '';
+        footer.style.left = '';
     }
     
     // KeyUp Events
@@ -175,7 +198,7 @@ $( document ).ready(function() {
             }
         }
     }
-    
+
     // End of JS
     
     });

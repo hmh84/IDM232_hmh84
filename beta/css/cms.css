@@ -88,7 +88,7 @@ form input, textarea {
 
 textarea {
     min-width: 100%;
-    min-height: 34px;
+    min-height: 100px;
     max-width: 100%;
     max-height: 15rem;
 }
@@ -103,6 +103,12 @@ textarea {
 
 form input:last-of-type {
     margin-bottom: 0;
+}
+
+#visibility {
+    margin-left: 1rem;
+    width: 2rem;
+    height: 2rem;
 }
 
 /* [small] {
@@ -121,11 +127,58 @@ label {
     transform: scale(1.05);
 }
 
-/* #cms-buttons {
+div#form-footer {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-} */
+    align-items: center;
+}
+
+#delete-form-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+div#modal-delete-confirm button {
+    width: fit-content;
+}
+
+div#modal-delete-confirm {
+    height: 8.5rem;
+}
+
+#form-delete-cancel {
+    border: var(--primary-blue) solid .2rem;
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+#form-delete {
+    border: var(--red) solid .2rem;
+    background-color: var(--red);
+    color: white;
+}
+
+#form-delete-cancel:hover {
+    border: var(--primary-blue) solid .2rem;
+    background-color: white;
+    color: var(--primary-blue);
+}
+
+#form-delete:hover {
+    border: var(--red) solid .2rem;
+    background-color: white;
+    color: var(--red);
+}
+
+button[type="submit"] {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+#form-delete-button {
+    background-color: var(--red);
+    color: white;
+}
 
 /* Media Queries */
 
@@ -137,7 +190,7 @@ label {
     #cms-form {
         padding: 0 5%;
         height: fit-content;
-        margin: 0;
+        margin: 0 auto;
     }
     #cms-all-recipes {
         margin-right: 1rem;

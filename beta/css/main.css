@@ -8,6 +8,9 @@
     --hero-height: 17rem;
     --mobile-margin: 1.5rem;
     --standard-radius: .65rem;
+
+    --red: rgb(197, 6, 6);
+    --green: rgb(53, 212, 159);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
@@ -37,7 +40,7 @@ html, body, main, header, footer {
     overflow-x: hidden;
 }
 
-main h1, #hero-content h1:last-of-type, #last-p, #modal-recipe h1:last-of-type, div#modal-menu {
+main h1, #last-p, #modal-recipe h1:last-of-type, div#modal-menu, #modal-delete-confirm, #hero-text {
     text-align: center;
 }
 
@@ -84,41 +87,34 @@ body {
     position: absolute;
     width: 100%;
     z-index: 3;
-    padding: 1.5rem 1.5rem 0 1.5rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
 }
 
-#hero-content h1:first-of-type, #hero-content h2 {
+#hero-content-upper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: calc(var(--mobile-margin) * 1.5);
+}
+
+#hero-content * {
+    color: white;
+}
+
+.hero-title {
+    text-align: left;
+}
+
+#hero-links p {
     float: left;
-    margin: 0;
-    color: white;
+    margin-left: var(--mobile-margin);
 }
 
-#title {
-    margin: var(--mobile-margin) auto;
-}
-
-#hero-content p {
-    float: right;
-    color: white;
-}
-
-#hero-content p:first-of-type {
-    margin-left: 1rem;
-}
-
-#hero-content h2, #recipe-desc {
-    clear: both;
-}
-
-#recipe-desc {
-    font-weight: normal;
-}
-
-#hero-content h1:last-of-type {
-    clear: both;
-    margin: 4.5rem auto 0 auto;
+#hero-text {
     max-width: 20rem;
-    color: white;
+    margin: auto;
 }
 
 /* Main */
@@ -183,7 +179,7 @@ input[type=search]:focus {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#modal-menu button {
+#modal-menu button, #modal-delete-confirm button {
     width: 100%;
 }
 
@@ -343,7 +339,7 @@ input[type=search]:focus {
 
 /* Menu */
 
-div#modal-menu {
+div#modal-menu, div#modal-delete-confirm {
     position: fixed;
     margin: auto;
     top: -20vh;
@@ -356,6 +352,11 @@ div#modal-menu {
 
 #modal-help h1:first-of-type {
     text-align: center;
+}
+
+#modal-help h3 {
+    border-bottom: rgba(0, 0, 0, 0.5) solid 2px;
+    padding-bottom: 5px;
 }
 
 .help-expand {
@@ -385,7 +386,7 @@ div#modal-menu {
 .help-expand-head svg {
     width: 1.2rem;
     margin: 0 0 0 .75rem;
-    opacity: .25;
+    opacity: 0;
 }
 
 .help-expand-box {
@@ -481,14 +482,6 @@ div#cards {
 
 .card-mins, .card-cals {
     text-align: right;
-}
-
-div#load-more-div {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2rem 0;
 }
 
 /* Footer */
@@ -616,6 +609,11 @@ footer a {
 #filter-actions button:hover {
     background-color: var(--primary-blue);
     color: white;
+}
+
+p.input-head-title {
+    position: relative;
+    float: left;
 }
 
 /* External */
@@ -758,7 +756,7 @@ input[type=range]::-webkit-slider-thumb {
 
 /* Hovers */
 
-.card, footer a, footer a p, #header-help-link, #header-menu-link, .button-style, .modal-close, .control_indicator, .help-expand-head svg, .help-expand-box, .help-expand-head {
+.card, footer a, footer a p, #header-help-link, #header-menu-link, .button-style, .modal-close, .control_indicator, .help-expand-head svg, .help-expand-box, .help-expand-head, #hero-content-upper a h1, #hero-content-upper a h2 {
     transition: all .25s ease-in-out;
     -webkit-transition: all .25s ease-in-out;
 }
@@ -791,8 +789,12 @@ footer a:hover p {
     color: var(--primary-black);
 }
 
-button:hover, button img:hover, #filter-hitbox {
+button:hover, button img:hover, #filter-hitbox, input[type="checkbox"], #hero-content-upper a:hover {
     cursor: pointer;
+}
+
+#hero-content-upper a:hover h1, #hero-content-upper a:hover h2 {
+    color: var(--primary-black-rgba);
 }
 
 .logo-text:hover, .filter p, .filter h3, #title, footer p:first-of-type, #hero-content h1:hover, .modal-content-small h1:hover, #no-results h1, #modal-recipe *:hover {
@@ -811,7 +813,7 @@ button:hover, button img:hover, #filter-hitbox {
     #hero-filter {
     background: linear-gradient(90deg, rgba(103,218,232,0.75) 0%, rgba(103,218,232,0.4) 20%, rgba(103,218,232,0.4) 80%, rgba(103,218,232,0.75) 100%);
     }
-    #modal-menu {
+    #modal-menu, #modal-delete-confirm {
     transform: translateY(-50%);
     }
 }
