@@ -697,6 +697,10 @@ button:focus {
     border: .1rem solid var(--primary-blue);
 }
 
+.control_indicator {
+    border-radius: .25rem;
+}
+
 .control:hover input ~ .control_indicator,
 .control input:focus ~ .control_indicator {
     background: #cccccc00;
