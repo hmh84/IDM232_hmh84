@@ -322,7 +322,7 @@ input[type=search]:focus {
 #how-to-info svg {
     position: absolute;
     width: 5rem;
-    opacity: .75;
+    opacity: .65;
     margin: 0;
 }
 

@@ -39,7 +39,7 @@
     <?php
         if (!$row_s['how_to_link'] == '') {
     ?>
-    <div class="modal-close" style=" top: 27%; display: none;"><span></span><span></span></div>
+    <div class="modal-close" style="top: 27%; display: none;"><span></span><span></span></div>
     <?php
         }
     ?>

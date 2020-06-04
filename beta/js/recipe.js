@@ -14,9 +14,8 @@ function hide_video_modal() {
     modal_video.style.display = "none";
 }
 
-
 function show_video_modal() {
-    modal_close_button.style.display = "block";
+    modal_close_button.style.display = "flex";
     modal_video.style.display = "flex";
 }
 
