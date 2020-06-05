@@ -126,7 +126,6 @@
     <div class="modal-content" id="modal-menu" style="display: none">
         <h1>Menu</h1>
         <a href="../index.php"><button class="button-style">Home</button></a>
-        <a href="../admin/cms-users.php"><button class="button-style" id="menu-user-cms-button">User CMS</button></a>
         <button class="button-style" id="menu-continue-button">Close</button>
     </div>
 </div>

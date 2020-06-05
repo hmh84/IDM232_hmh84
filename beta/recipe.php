@@ -17,24 +17,13 @@
     <title>BlueBook - <?php echo $row_s['title'].' '.['subtitle'] ?></title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/recipe.css">
     <script
         src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         crossorigin="anonymous">
     </script>
 </head>
-<style>
-    body {
-        padding: 3vw;
-}
-    div#modal-recipe {
-        margin: auto;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-    div#modal-recipe, .modal-hero img {
-        border-radius: 0;
-}
-</style>
 <body>
     <?php
         if (!$row_s['how_to_link'] == '') {
@@ -45,7 +34,7 @@
     ?>
     <div class="modal-content" id="modal-recipe">
         <div class="modal-hero">
-                <img id="recipe-hero" src="graphics/modal-heros/<?php echo $row_s['main_img']; ?>" alt="Recipe Photo">
+                <img id="recipe-hero" hero="<?php echo $row_s['id']; ?>" src="graphics/modal-heros/<?php echo $row_s['main_img']; ?>" alt="Recipe Photo">
             </div>
             <div class="modal-content-main">
                 <h1 id="recipe-title"><?php echo $row_s['title']; ?></h1>

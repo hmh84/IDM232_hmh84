@@ -281,7 +281,7 @@ $( document ).ready(function() {
     
     // Range Slider
     
-    function getVals(){
+    function getVals() {
         // Get slider values
         var parent = this.parentNode.parentNode;
         var slides = parent.getElementsByTagName("input");
@@ -292,9 +292,10 @@ $( document ).ready(function() {
         
         var displayElement = parent.getElementsByClassName("rangeValues")[0];
         displayElement.innerHTML = "Cook Times: "+slide1+" - "+ slide2+" mins";
+        console.log(parent);
     }
     
-    window.onload = function(){
+    window.onload = function() {
         // Initialize Sliders
         var sliderSections = document.getElementsByClassName("range-slider");
         for( var x = 0; x < sliderSections.length; x++ ){

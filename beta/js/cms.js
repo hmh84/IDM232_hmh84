@@ -49,11 +49,15 @@ $( document ).ready(function() {
     
     function closeAllModals() {
         modal_menu.style.top = "-20vh"
-        modal_delete_confirm.style.top = "-20vh"
+        if (modal_delete_confirm) {
+            modal_delete_confirm.style.top = "-20vh"
+        }
         hideModal();
         setTimeout(function(){
             modal_menu.style.display = "none";
-            modal_delete_confirm.style.display = "none";
+            if (modal_delete_confirm) {
+                modal_delete_confirm.style.display = "none";
+            }
             modalCloseButtonCheck();
         },250);
     };
