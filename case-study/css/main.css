@@ -221,8 +221,10 @@ video {
     width: 31%;
 }
 
-img[alt="CMS"] {
-    margin: 2rem 0;
+img[alt="CMS"], img[alt="Style Guide"], #vid {
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 800px;
 }
 
 /* Hover States */
