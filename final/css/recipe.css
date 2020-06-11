@@ -1,0 +1,44 @@
+body {
+    padding: 3vw;
+}
+div#modal-recipe {
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+div#modal-recipe, .modal-hero img {
+    border-radius: 0;
+}
+
+[hero] {
+    object-position: 0 50%; /* Default (Don't Touch */
+}
+
+/* Vertical Hero Adjustments by ID */
+
+[hero="3"] {
+    object-position: 0 30%;
+}
+
+[hero="5"] {
+    object-position: 0 35%;
+}
+
+[hero="6"] {
+    object-position: 0 60%;
+}
+
+[hero="8"] {
+    object-position: 0 80%;
+}
+
+[hero="13"] {
+    object-position: 0 25%;
+}
+
+[hero="28"] {
+    object-position: 0 100%;
+}
+
+[hero="29"] {
+    object-position: 0 60%;
+}

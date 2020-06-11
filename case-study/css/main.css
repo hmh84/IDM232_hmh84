@@ -1,0 +1,249 @@
+:root {
+    --light-gray: rgb(243, 243, 243);
+    --medium-gray: rgb(231, 229, 229);
+    --dark-gray: rgb(100, 100, 100);
+
+    --primary-black: #202020;
+    --secondary-black: #505050;
+    --primary-gray: #828282;
+
+    --green: rgb(53, 212, 159);
+    --red: rgb(197, 6, 6);
+    --blue: rgb(0, 131, 245);
+    --orange: rgb(255, 106, 0);
+}
+
+* {
+    margin: 0;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.area {
+    padding: 5%;
+    margin: 0;
+}
+
+header {
+    padding: 5% 5% 0 5%;
+}
+
+#top-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 4rem;
+    background-color: white;
+    margin-bottom: 5%;
+    overflow-x: scroll;
+}
+
+header a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    margin: 0 1vw;
+    height: 100%;
+    width: fit-content;
+    text-decoration: none;
+}
+
+p a {
+    color: var(--blue);
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    height: 100%;
+}
+
+li {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    padding: 0 2rem;
+    color: black;
+}
+
+#active-li {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+#hero img {
+    width: 100%;
+}
+
+#intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.caption {
+    text-decoration: underline;
+    margin: 1rem 0;
+    padding: 0;
+}
+
+.link {
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.list * {
+    margin: .75rem 0;
+}
+
+#intro * {
+    margin: 1.25rem 0;
+}
+
+#intro p {
+    font-size: 1.33rem;
+}
+
+body {
+    background-color: var(--light-gray);
+}
+
+main h1, main p, main h2, main div {
+    margin: 2rem 0;
+}
+
+img {
+    max-width: 100%;
+    margin: 2rem auto;
+    display: flex;
+}
+
+p, #intro h1 {
+    padding: 0 5%;
+}
+
+main h1 {
+    background-color: var(--red);
+    color: white;
+    padding: 1rem 2rem;
+    width: fit-content;
+    clip-path: polygon(1.5rem 0%, 100% 0%, calc(100% - 1.5rem) 100%, 0% 100%);
+}
+
+main h2 {
+    color: var(--red);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+main p {
+    line-height: 1.75rem;
+}
+
+main h1:first-of-type {
+    margin-top: 0;
+}
+
+#the-last-p {
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+strong {
+    color: var(--blue);
+}
+
+.quote {
+    text-align: center;
+    font-style: italic;
+    font-size: 1.25rem;
+}
+
+.quote strong {
+    color: var(--red);
+}
+
+.break {
+    width: 10%;
+    height: 2px;
+    background-color: var(--dark-gray);
+    margin: 2rem auto;
+}
+
+video {
+    width: 50%;
+    display: flex;
+    margin: auto;
+}
+
+/* Specific */
+
+#hero img {
+    width: 100%;
+    height: 35rem;
+    object-fit: cover;
+    object-position: 0 45%;
+}
+
+.two-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.two-wrap div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.two-wrap img {
+    /* max-width: 50%; */
+    max-height: 75vh;
+    padding: 1%;
+    margin: 0;
+}
+
+#spreadsheet-img {
+    width: 65%;
+}
+
+#validation-img {
+    width: 31%;
+}
+
+img[alt="CMS"] {
+    margin: 2rem 0;
+}
+
+/* Hover States */
+
+header a, header li, p a {
+    transition: all .25s ease-in-out;
+    -webkit-transition: all .25s ease-in-out;
+}
+
+header a:hover {
+    background-color: var(--medium-gray);
+    color: var(--dark-gray);
+}
+
+p a:hover {
+    color: var(--dark-gray);
+    text-decoration: none;
+}
+
+/* Media Queries */
+
+@media only screen and () {
+    
+}
